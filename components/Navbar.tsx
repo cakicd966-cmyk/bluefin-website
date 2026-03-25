@@ -5,11 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Menu, X, Zap } from "lucide-react";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Reviews", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/#services" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/#contact" },
   { label: "Fin Facts", href: "/blog" },
   { label: "Fin Apparel", href: "/store" },
 ];

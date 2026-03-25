@@ -10,7 +10,7 @@ const footerLinks = {
     "Electrical Work",
     "Emergency Callouts",
   ],
-  Company: ["About Us", "Service Areas", "Contact", "Get a Quote"],
+  Company: ["About Us", "FAQ", "Service Areas", "Contact", "Get a Quote"],
   More: ["Fin Facts Blog", "Fin Apparel Store"],
 };
 
@@ -88,6 +88,10 @@ export default function Footer() {
                           ? "/blog"
                           : link === "Fin Apparel Store"
                           ? "/store"
+                          : link === "About Us"
+                          ? "/about"
+                          : link === "FAQ"
+                          ? "/faq"
                           : "#"
                       }
                       className="font-rubik text-white/50 hover:text-white text-sm transition-colors duration-200 cursor-pointer"

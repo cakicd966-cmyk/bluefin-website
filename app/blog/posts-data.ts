@@ -682,8 +682,8 @@ export const posts: BlogPost[] = [
     readTime: "3 min read",
     icon: "🔧",
     image:
-      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1200&q=80&fit=crop",
-    imageAlt: "Wall mounted split system air conditioner in home",
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80&fit=crop",
+    imageAlt: "Technician performing air conditioner maintenance service",
     author: "Bluefin Team",
     seo: {
       title: "How Often Should You Service Your Air Conditioner? | Bluefin Wollongong",

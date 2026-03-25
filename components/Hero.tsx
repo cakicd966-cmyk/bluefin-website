@@ -46,7 +46,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 bg-electric/10 border border-electric/25 text-electric text-xs font-outfit font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-wider"
             >
               <span className="w-2 h-2 rounded-full bg-gold animate-pulse-slow" />
-              NSW Licensed & Insured Tradies
+              Wollongong & Illawarra — Licensed & Insured
             </motion.div>
 
             {/* Headline */}
@@ -57,7 +57,7 @@ export default function Hero() {
               custom={1}
               className="font-outfit font-black text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl leading-[1.05] text-gray-900 mb-6"
             >
-              Your Local{" "}
+              Wollongong&apos;s Local{" "}
               <span className="text-electric">Air-Con</span> &{" "}
               <span className="text-gold">Electrical</span>{" "}
               Experts
@@ -71,7 +71,7 @@ export default function Hero() {
               custom={2}
               className="font-rubik text-gray-600 text-lg leading-relaxed mb-8 max-w-lg"
             >
-              Trusted by NSW homeowners and businesses for over a decade. From air con installation to full electrical fitouts — we show up on time and get the job done right.
+              Trusted by Wollongong, Illawarra and Sydney homeowners for over a decade. From air con installation to full electrical fitouts — we show up on time and get the job done right.
             </motion.p>
 
             {/* CTAs */}
@@ -156,7 +156,7 @@ export default function Hero() {
                     <Star key={i} className="w-4 h-4 text-gold fill-gold" />
                   ))}
                 </div>
-                <p className="font-rubik text-gray-400 text-xs">NSW Licensed Tradies</p>
+                <p className="font-rubik text-gray-400 text-xs">Wollongong & Illawarra</p>
               </div>
 
               {/* Floating stat badge */}

@@ -134,9 +134,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-rubik text-gray-500 text-xs uppercase tracking-wider mb-1">Service Area</p>
-                  <p className="font-outfit font-semibold text-gray-900 text-sm">New South Wales</p>
+                  <p className="font-outfit font-semibold text-gray-900 text-sm">Wollongong & Illawarra</p>
                   <p className="font-rubik text-gray-500 text-sm mt-1 leading-relaxed">
-                    Servicing Greater Sydney, Western Suburbs, Blue Mountains and surrounding NSW regions.
+                    Serving Wollongong, Shellharbour, Kiama, Dapto, Illawarra and Greater Sydney.
                   </p>
                 </div>
               </div>

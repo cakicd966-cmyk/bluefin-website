@@ -3,9 +3,17 @@ import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Bluefin Air-Conditioning & Electrical",
+  title: "About Us | Wollongong Air Con & Electrical Specialists",
   description:
-    "Learn about Bluefin Air-Conditioning & Electrical — a family-owned NSW trades business with over a decade of experience. Meet the team behind the work.",
+    "Bluefin Air-Conditioning & Electrical — a family-owned Wollongong trades business proudly serving the Illawarra and Sydney regions. Licensed, insured, and local. Contractor Licence 982390C.",
+  keywords:
+    "about Bluefin, Wollongong electrician, Illawarra air conditioning, local trades Wollongong, licensed electrician Illawarra",
+  openGraph: {
+    title: "About Bluefin | Wollongong Air Con & Electrical",
+    description:
+      "Family-owned Wollongong trades business serving Illawarra and Sydney. Licensed & insured. Contractor Licence 982390C.",
+    url: "https://bluefinnairandelec.netlify.app/about",
+  },
 };
 
 export default function AboutPage() {

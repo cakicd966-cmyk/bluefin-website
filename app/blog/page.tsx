@@ -3,9 +3,17 @@ import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Fin Facts | Bluefin Air-Con & Electrical Blog",
+  title: "Air Con & Electrical Tips for Illawarra Homeowners | Fin Facts",
   description:
-    "Expert air-conditioning and electrical tips from the Bluefin team. Learn how to maintain your system, reduce energy bills, and stay safe.",
+    "Expert air-conditioning and electrical advice from Bluefin's Wollongong-based team. How-to guides, maintenance tips and energy-saving advice for Illawarra and Sydney homeowners.",
+  keywords:
+    "air conditioning tips Wollongong, electrician advice Illawarra, air con maintenance Wollongong, energy saving air con, electrical safety tips NSW",
+  openGraph: {
+    title: "Air Con & Electrical Tips for Illawarra Homeowners | Fin Facts",
+    description:
+      "Expert advice from Bluefin's Wollongong-based team. Tips for Illawarra and Sydney homeowners.",
+    url: "https://bluefinnairandelec.netlify.app/blog",
+  },
 };
 
 const posts = [

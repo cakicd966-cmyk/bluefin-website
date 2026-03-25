@@ -64,12 +64,12 @@ export default function Footer() {
             </div>
 
             <p className="font-rubik text-white/50 text-sm leading-relaxed max-w-xs mb-5">
-              Your trusted local air-conditioning and electrical specialists in NSW. Licensed, insured, and committed to quality work on every job.
+              Your trusted local air-conditioning and electrical specialists serving Wollongong, Illawarra and Sydney. Licensed, insured, and committed to quality work on every job.
             </p>
 
             {/* Service area */}
             <p className="font-rubik text-white/30 text-xs">
-              Servicing Greater Sydney, Western Suburbs, Blue Mountains & surrounding NSW regions.
+              Serving Wollongong, Illawarra, Shellharbour, Kiama, Dapto & Greater Sydney.
             </p>
           </div>
 
@@ -92,6 +92,20 @@ export default function Footer() {
                           ? "/about"
                           : link === "FAQ"
                           ? "/faq"
+                          : link === "Air Con Installation"
+                          ? "/services#air-con-installation"
+                          : link === "Air Con Servicing"
+                          ? "/services#air-con-servicing"
+                          : link === "Electrical Work"
+                          ? "/services#electrical"
+                          : link === "Emergency Callouts"
+                          ? "/services#emergency"
+                          : link === "Service Areas"
+                          ? "/services"
+                          : link === "Contact"
+                          ? "/#contact"
+                          : link === "Get a Quote"
+                          ? "/#contact"
                           : "#"
                       }
                       className="font-rubik text-white/50 hover:text-white text-sm transition-colors duration-200 cursor-pointer"

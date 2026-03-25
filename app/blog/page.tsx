@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
+import { posts } from "@/app/blog/posts-data";
 
 export const metadata: Metadata = {
   title: "Air Con & Electrical Tips for Illawarra Homeowners | Fin Facts",
@@ -16,74 +17,6 @@ export const metadata: Metadata = {
   },
 };
 
-const posts = [
-  {
-    slug: "5-signs-aircon-needs-servicing",
-    category: "Air Conditioning",
-    categoryColor: "bg-blue-50 text-blue-700",
-    title: "5 Signs Your Air Con Needs Servicing Right Now",
-    excerpt:
-      "Ignoring your air conditioner's warning signs can turn a cheap service call into an expensive repair. Learn the five telltale signs that your system needs professional attention before summer hits.",
-    date: "March 18, 2026",
-    readTime: "4 min read",
-    icon: "❄️",
-  },
-  {
-    slug: "ducted-vs-split-system",
-    category: "Air Conditioning",
-    categoryColor: "bg-blue-50 text-blue-700",
-    title: "Ducted vs Split System: Which Is Right for Your Home?",
-    excerpt:
-      "Choosing between a ducted and split system can be confusing. We break down the pros, cons, and costs of each option so you can make the smartest choice for your home and budget.",
-    date: "March 10, 2026",
-    readTime: "6 min read",
-    icon: "🌡️",
-  },
-  {
-    slug: "reduce-aircon-running-costs",
-    category: "Energy Saving",
-    categoryColor: "bg-green-50 text-green-700",
-    title: "How to Cut Your Air Con Running Costs This Summer",
-    excerpt:
-      "Your air conditioner doesn't have to send your power bill through the roof. These practical tips from our techs can reduce your cooling costs by up to 30% — without sacrificing comfort.",
-    date: "February 28, 2026",
-    readTime: "5 min read",
-    icon: "💰",
-  },
-  {
-    slug: "electrical-warning-signs",
-    category: "Electrical Safety",
-    categoryColor: "bg-red-50 text-red-700",
-    title: "Warning Signs of Electrical Problems You Shouldn't Ignore",
-    excerpt:
-      "Faulty wiring is one of the leading causes of house fires in Australia. Know the warning signs — flickering lights, tripping breakers, burning smells — and when to call a licensed electrician immediately.",
-    date: "February 14, 2026",
-    readTime: "5 min read",
-    icon: "⚡",
-  },
-  {
-    slug: "switchboard-upgrade-benefits",
-    category: "Electrical",
-    categoryColor: "bg-yellow-50 text-yellow-700",
-    title: "Why You Should Upgrade Your Switchboard in 2026",
-    excerpt:
-      "Old switchboards with ceramic fuses aren't just outdated — they're a safety hazard. A modern switchboard upgrade protects your family, improves reliability, and can actually lower your insurance premiums.",
-    date: "January 30, 2026",
-    readTime: "4 min read",
-    icon: "🔌",
-  },
-  {
-    slug: "how-often-service-aircon",
-    category: "Maintenance",
-    categoryColor: "bg-purple-50 text-purple-700",
-    title: "How Often Should You Service Your Air Conditioner?",
-    excerpt:
-      "Most manufacturers recommend an annual service, but the honest answer depends on how much you use it, where you live, and what type of system you have. Here's our complete guide.",
-    date: "January 15, 2026",
-    readTime: "3 min read",
-    icon: "🔧",
-  },
-];
 
 export default function BlogPage() {
   return (
@@ -125,16 +58,19 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:border-electric/30 transition-all duration-300 group flex flex-col"
               >
-                {/* Icon header */}
-                <div className="bg-gradient-to-br from-navy-deep to-gray-100 px-6 py-8 flex items-center justify-between">
-                  <span className="text-4xl">{post.icon}</span>
-                  <span className={`text-xs font-rubik font-semibold px-3 py-1 rounded-full ${post.categoryColor}`}>
-                    {post.category}
-                  </span>
-                </div>
+                {/* Hero image — 16:9 */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full aspect-video object-cover"
+                />
 
                 {/* Content */}
                 <div className="p-6 flex flex-col flex-1">
+                  <span className={`text-xs font-rubik font-semibold px-3 py-1 rounded-full ${post.categoryColor} mb-3 self-start`}>
+                    {post.category}
+                  </span>
                   <h2 className="font-outfit font-bold text-gray-900 text-lg leading-snug mb-3 group-hover:text-electric transition-colors duration-200">
                     {post.title}
                   </h2>

@@ -120,8 +120,9 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => (
-              <article
+              <a
                 key={post.slug}
+                href={`/blog/${post.slug}`}
                 className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:border-electric/30 transition-all duration-300 group flex flex-col"
               >
                 {/* Icon header */}
@@ -151,7 +152,7 @@ export default function BlogPage() {
                     </span>
                   </div>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
 

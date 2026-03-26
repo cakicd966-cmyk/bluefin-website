@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     "Split system & ducted air conditioning installation, servicing and repairs. Licensed electrical work, switchboard upgrades and 24/7 emergency callouts across Wollongong, Illawarra and Sydney. Call 0428 631 931.",
   keywords:
     "air conditioning installation Wollongong, ducted air con Illawarra, split system installation Wollongong, electrician Wollongong, switchboard upgrade Illawarra, air con servicing Wollongong, emergency electrician Wollongong, electrical work Shellharbour",
+  alternates: {
+    canonical: "/services",
+  },
   openGraph: {
     title: "Air Con & Electrical Services Wollongong & Illawarra | Bluefin",
     description:

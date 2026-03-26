@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     "Expert air-conditioning and electrical advice from Bluefin's Wollongong-based team. How-to guides, maintenance tips and energy-saving advice for Illawarra and Sydney homeowners.",
   keywords:
     "air conditioning tips Wollongong, electrician advice Illawarra, air con maintenance Wollongong, energy saving air con, electrical safety tips NSW",
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
     title: "Air Con & Electrical Tips for Illawarra Homeowners | Fin Facts",
     description:

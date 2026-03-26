@@ -19,6 +19,9 @@ export function generateMetadata({ params }: Props): Metadata {
     title: post.seo.title,
     description: post.seo.description,
     keywords: post.seo.keywords,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       title: post.seo.title,
       description: post.seo.description,
@@ -44,5 +47,36 @@ export default function BlogPostPage({ params }: Props) {
     )
     .slice(0, 2);
 
-  return <BlogPostClient post={post} related={related} />;
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.seo.description,
+    image: post.image,
+    author: {
+      "@type": "Organization",
+      name: "Bluefin Air-Conditioning & Electrical",
+      url: "https://bluefinnairandelec.netlify.app",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Bluefin Air-Conditioning & Electrical",
+      url: "https://bluefinnairandelec.netlify.app",
+    },
+    datePublished: post.date,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://bluefinnairandelec.netlify.app/blog/${post.slug}`,
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
+      <BlogPostClient post={post} related={related} />
+    </>
+  );
 }

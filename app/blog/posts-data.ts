@@ -44,7 +44,7 @@ export const posts: BlogPost[] = [
     image:
       "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1200&q=80&fit=crop",
     imageAlt: "HVAC technician servicing an air conditioning unit",
-    author: "Bluefin Team",
+    author: "Bluefin Air-Conditioning & Electrical",
     seo: {
       title: "5 Signs Your Air Con Needs Servicing | Bluefin Wollongong",
       description:
@@ -178,7 +178,7 @@ export const posts: BlogPost[] = [
     image:
       "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=1200&q=80&fit=crop",
     imageAlt: "Modern home interior with clean living space",
-    author: "Bluefin Team",
+    author: "Bluefin Air-Conditioning & Electrical",
     seo: {
       title: "Ducted vs Split System Air Con: Which Is Right for You? | Bluefin Wollongong",
       description:
@@ -300,7 +300,7 @@ export const posts: BlogPost[] = [
     image:
       "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&q=80&fit=crop",
     imageAlt: "Energy efficient home cooling in summer",
-    author: "Bluefin Team",
+    author: "Bluefin Air-Conditioning & Electrical",
     seo: {
       title: "How to Cut Air Con Running Costs This Summer | Bluefin Wollongong",
       description:
@@ -427,7 +427,7 @@ export const posts: BlogPost[] = [
     image:
       "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1200&q=80&fit=crop",
     imageAlt: "Licensed electrician inspecting electrical wiring",
-    author: "Bluefin Team",
+    author: "Bluefin Air-Conditioning & Electrical",
     seo: {
       title: "Electrical Warning Signs You Shouldn't Ignore | Bluefin Wollongong",
       description:
@@ -564,7 +564,7 @@ export const posts: BlogPost[] = [
     image:
       "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=80&fit=crop",
     imageAlt: "Modern electrical switchboard with circuit breakers",
-    author: "Bluefin Team",
+    author: "Bluefin Air-Conditioning & Electrical",
     seo: {
       title: "Switchboard Upgrade Wollongong — Benefits, Cost & When to Act | Bluefin",
       description:
@@ -684,7 +684,7 @@ export const posts: BlogPost[] = [
     image:
       "/blog/aircon-service.jpg",
     imageAlt: "Wall-mounted split system air conditioner in a modern home",
-    author: "Bluefin Team",
+    author: "Bluefin Air-Conditioning & Electrical",
     seo: {
       title: "How Often Should You Service Your Air Conditioner? | Bluefin Wollongong",
       description:

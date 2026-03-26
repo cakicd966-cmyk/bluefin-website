@@ -11,10 +11,25 @@ export const metadata: Metadata = {
   keywords:
     "air conditioning Wollongong, electrician Wollongong, air con Illawarra, emergency electrician Wollongong, ducted air conditioning Wollongong, split system installation Illawarra, electrician Sydney, air con servicing Wollongong",
   metadataBase: new URL("https://bluefinnairandelec.netlify.app"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_AU",
     siteName: "Bluefin Air-Conditioning & Electrical",
+    images: [
+      {
+        url: "/blog/aircon-service.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Bluefin Air-Conditioning & Electrical — Wollongong & Illawarra",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/blog/aircon-service.jpg"],
   },
   icons: {
     icon: [

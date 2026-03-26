@@ -9,16 +9,20 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Air Conditioning & Electrician Wollongong | Bluefin",
+  title: "Air Conditioning & Electrician Wollongong",
   description:
-    "Wollongong's trusted air-conditioning and electrical specialists. Split system & ducted installation, servicing, switchboard upgrades and 24/7 emergency callouts across Illawarra and Sydney. Call 0428 631 931.",
+    "Wollongong's trusted air con & electrical specialists. Split systems, ducted AC, switchboard upgrades & 24/7 emergency callouts across Illawarra and Sydney. Call 0428 631 931.",
   keywords:
     "air conditioning Wollongong, electrician Wollongong, split system installation Wollongong, ducted air con Illawarra, emergency electrician Wollongong, switchboard upgrade Wollongong",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Air Conditioning & Electrician Wollongong | Bluefin",
     description:
-      "Wollongong's trusted air-conditioning and electrical specialists. Serving Illawarra and Sydney. Call 0428 631 931.",
+      "Wollongong's trusted air con & electrical specialists. Split systems, ducted AC, switchboard upgrades & 24/7 emergency callouts. Call 0428 631 931.",
     url: "https://bluefinnairandelec.netlify.app",
+    images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Bluefin Air-Conditioning & Electrical — Wollongong & Illawarra" }],
   },
 };
 

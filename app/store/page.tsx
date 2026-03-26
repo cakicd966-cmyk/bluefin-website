@@ -2,13 +2,17 @@ import type { Metadata } from "next";
 import StoreClient from "./StoreClient";
 
 export const metadata: Metadata = {
-  title: "Fin Apparel | Bluefin Air-Con & Electrical Merch",
+  title: "Fin Apparel | Official Air-Con & Electrical Merch",
   description:
     "Grab some Bluefin gear. Official merchandise from Wollongong's favourite air-conditioning and electrical team.",
+  alternates: {
+    canonical: "/store",
+  },
   openGraph: {
-    title: "Fin Apparel | Bluefin Merch",
+    title: "Fin Apparel | Official Bluefin Merch",
     description: "Official merchandise from Wollongong's favourite air-con and electrical team.",
     url: "https://bluefinnairandelec.netlify.app/store",
+    images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Bluefin Air-Conditioning & Electrical Merch" }],
   },
 };
 

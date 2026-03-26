@@ -46,7 +46,7 @@ export const posts: BlogPost[] = [
     imageAlt: "HVAC technician servicing an air conditioning unit",
     author: "Bluefin Air-Conditioning & Electrical",
     seo: {
-      title: "5 Signs Your Air Con Needs Servicing | Bluefin Wollongong",
+      title: "5 Signs Your Air Con Needs Servicing — Wollongong",
       description:
         "Is your air conditioner blowing warm air, making strange noises or leaking water? These 5 warning signs mean it's time to call a Wollongong air con technician. Bluefin serves Illawarra & Sydney.",
       keywords:
@@ -180,7 +180,7 @@ export const posts: BlogPost[] = [
     imageAlt: "Modern home interior with clean living space",
     author: "Bluefin Air-Conditioning & Electrical",
     seo: {
-      title: "Ducted vs Split System Air Con: Which Is Right for You? | Bluefin Wollongong",
+      title: "Ducted vs Split System Air Con: Which Is Right for You?",
       description:
         "Not sure whether to install a ducted or split system air conditioner? Bluefin's Wollongong technicians break down the costs, pros and cons for Illawarra homes and businesses.",
       keywords:
@@ -302,7 +302,7 @@ export const posts: BlogPost[] = [
     imageAlt: "Energy efficient home cooling in summer",
     author: "Bluefin Air-Conditioning & Electrical",
     seo: {
-      title: "How to Cut Air Con Running Costs This Summer | Bluefin Wollongong",
+      title: "How to Cut Air Con Running Costs This Summer | Illawarra",
       description:
         "Practical tips from Bluefin's Wollongong technicians to reduce your air conditioning electricity costs by up to 30%. Simple changes that make a real difference to your power bill.",
       keywords:
@@ -429,7 +429,7 @@ export const posts: BlogPost[] = [
     imageAlt: "Licensed electrician inspecting electrical wiring",
     author: "Bluefin Air-Conditioning & Electrical",
     seo: {
-      title: "Electrical Warning Signs You Shouldn't Ignore | Bluefin Wollongong",
+      title: "Electrical Warning Signs You Shouldn't Ignore | Wollongong",
       description:
         "Flickering lights, burning smells and tripping breakers are warning signs of serious electrical faults. Bluefin's licensed Wollongong electricians explain what to watch for and when to act.",
       keywords:
@@ -566,7 +566,7 @@ export const posts: BlogPost[] = [
     imageAlt: "Modern electrical switchboard with circuit breakers",
     author: "Bluefin Air-Conditioning & Electrical",
     seo: {
-      title: "Switchboard Upgrade Wollongong — Benefits, Cost & When to Act | Bluefin",
+      title: "Switchboard Upgrade Wollongong: Benefits & Cost Guide",
       description:
         "Does your Wollongong home still have an old ceramic fuse switchboard? Bluefin's licensed electricians explain the safety risks, the benefits of upgrading, and what a modern switchboard costs in the Illawarra.",
       keywords:
@@ -686,7 +686,7 @@ export const posts: BlogPost[] = [
     imageAlt: "Wall-mounted split system air conditioner in a modern home",
     author: "Bluefin Air-Conditioning & Electrical",
     seo: {
-      title: "How Often Should You Service Your Air Conditioner? | Bluefin Wollongong",
+      title: "How Often Should You Service Your Air Conditioner?",
       description:
         "Annual or twice a year? Bluefin's Wollongong technicians give you the honest answer on air con servicing frequency for Illawarra and Sydney homes, including what's included in a professional service.",
       keywords:

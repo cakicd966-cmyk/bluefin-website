@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: {
     default: "Bluefin Air-Conditioning & Electrical | Wollongong & Sydney",
-    template: "%s | Bluefin Air-Con & Electrical",
+    template: "%s | Bluefin",
   },
   description:
     "Licensed air-conditioning and electrical specialists serving Wollongong, Illawarra and Sydney. Split systems, ducted air con, switchboard upgrades & emergency callouts. Call 0428 631 931.",

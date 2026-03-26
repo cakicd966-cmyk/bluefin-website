@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import FaqClient from "./FaqClient";
 
 export const metadata: Metadata = {
-  title: "Air Con & Electrical FAQs | Wollongong & Illawarra",
+  title: "Air Con & Electrical FAQs | Wollongong",
   description:
     "Answers to your air-conditioning and electrical questions. Pricing, installation, servicing and emergency callouts for Wollongong, Illawarra and Sydney. Call Bluefin on 0428 631 931.",
   keywords:
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     canonical: "/faq",
   },
   openGraph: {
-    title: "Air Con & Electrical FAQs | Bluefin Wollongong",
+    title: "Air Con & Electrical FAQs | Wollongong",
     description:
       "Common questions about air conditioning and electrical services in Wollongong and the Illawarra region.",
     url: "https://bluefinnairandelec.netlify.app/faq",

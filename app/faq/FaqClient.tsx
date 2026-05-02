@@ -24,15 +24,15 @@ const faqItems: FAQItem[] = [
         <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
           <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
             <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#fff", fontWeight: 600 }}>Split system (supply &amp; install):</strong> from $1,200–$2,500+ depending on the kW rating and brand
+            <strong style={{ color: "#111", fontWeight: 600 }}>Split system (supply &amp; install):</strong> from $1,200–$2,500+ depending on the kW rating and brand
           </li>
           <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
             <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#fff", fontWeight: 600 }}>Multi-head systems:</strong> from $3,500+ for a 3-zone setup
+            <strong style={{ color: "#111", fontWeight: 600 }}>Multi-head systems:</strong> from $3,500+ for a 3-zone setup
           </li>
           <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
             <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#fff", fontWeight: 600 }}>Ducted systems:</strong> from $6,000–$15,000+ depending on home size and zones
+            <strong style={{ color: "#111", fontWeight: 600 }}>Ducted systems:</strong> from $6,000–$15,000+ depending on home size and zones
           </li>
         </ul>
         <p style={{ marginTop: ".75rem" }}>Every job is different. The best way to get an accurate number is to <a href="/#contact" style={{ color: "#1e90ff", textDecoration: "none" }}>request a free quote</a> — we&apos;ll give you a fixed price upfront with no surprises.</p>
@@ -56,7 +56,7 @@ const faqItems: FAQItem[] = [
           ].map(([brand, desc]) => (
             <li key={brand} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
               <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              <strong style={{ color: "#fff", fontWeight: 600 }}>{brand}</strong> — {desc}
+              <strong style={{ color: "#111", fontWeight: 600 }}>{brand}</strong> — {desc}
             </li>
           ))}
         </ul>
@@ -70,7 +70,7 @@ const faqItems: FAQItem[] = [
     question: "Do you service my area?",
     answer: (
       <div>
-        <p>We operate across <strong style={{ color: "#fff", fontWeight: 600 }}>Greater Sydney and surrounding NSW regions</strong>, including:</p>
+        <p>We operate across <strong style={{ color: "#111", fontWeight: 600 }}>Greater Sydney and surrounding NSW regions</strong>, including:</p>
         <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
           {[
             "Western Sydney (Penrith, Parramatta, Blacktown, Hills District)",
@@ -104,7 +104,7 @@ const faqItems: FAQItem[] = [
           ].map(([size, room, kw]) => (
             <li key={size} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
               <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              <strong style={{ color: "#fff", fontWeight: 600 }}>{size}</strong> ({room}): {kw}
+              <strong style={{ color: "#111", fontWeight: 600 }}>{size}</strong> ({room}): {kw}
             </li>
           ))}
         </ul>
@@ -118,7 +118,7 @@ const faqItems: FAQItem[] = [
     question: "How often should I service my air conditioner?",
     answer: (
       <div>
-        <p>We recommend servicing your air conditioner <strong style={{ color: "#fff", fontWeight: 600 }}>at least once a year</strong>, ideally before summer. Regular servicing:</p>
+        <p>We recommend servicing your air conditioner <strong style={{ color: "#111", fontWeight: 600 }}>at least once a year</strong>, ideally before summer. Regular servicing:</p>
         <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
           {[
             "Extends the life of your unit",
@@ -132,7 +132,7 @@ const faqItems: FAQItem[] = [
             </li>
           ))}
         </ul>
-        <p style={{ marginTop: ".75rem" }}>Service visits start from around <strong style={{ color: "#fff", fontWeight: 600 }}>$150–$250</strong> for a standard split system. Commercial systems with multiple heads will vary. Ask us about a service package if you have multiple units.</p>
+        <p style={{ marginTop: ".75rem" }}>Service visits start from around <strong style={{ color: "#111", fontWeight: 600 }}>$150–$250</strong> for a standard split system. Commercial systems with multiple heads will vary. Ask us about a service package if you have multiple units.</p>
       </div>
     ),
   },
@@ -151,7 +151,7 @@ const faqItems: FAQItem[] = [
           ].map(([type, price]) => (
             <li key={type} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
               <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              <strong style={{ color: "#fff", fontWeight: 600 }}>{type}:</strong> {price}
+              <strong style={{ color: "#111", fontWeight: 600 }}>{type}:</strong> {price}
             </li>
           ))}
         </ul>
@@ -169,11 +169,11 @@ const faqItems: FAQItem[] = [
         <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
           <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
             <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#fff", fontWeight: 600 }}>Contractor Licence:</strong> 982390C (air conditioning &amp; refrigeration)
+            <strong style={{ color: "#111", fontWeight: 600 }}>Contractor Licence:</strong> 982390C (air conditioning &amp; refrigeration)
           </li>
           <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
             <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#fff", fontWeight: 600 }}>Electrical Contractor Licence:</strong> L191263 (A-grade electricians)
+            <strong style={{ color: "#111", fontWeight: 600 }}>Electrical Contractor Licence:</strong> L191263 (A-grade electricians)
           </li>
         </ul>
         <p style={{ marginTop: ".75rem" }}>We carry full public liability insurance on every job. You can ask to see our licence details at any time — we&apos;re proud to show them. Always make sure any tradie you hire is properly licensed; it protects you if something goes wrong.</p>
@@ -186,7 +186,7 @@ const faqItems: FAQItem[] = [
     question: "Do you offer emergency or after-hours call-outs?",
     answer: (
       <div>
-        <p>Yes. We offer <strong style={{ color: "#fff", fontWeight: 600 }}>24/7 emergency callouts</strong> for urgent electrical faults and air con failures. If you have a safety issue — sparking outlets, tripped boards that won&apos;t reset, or your system has died in the middle of a heatwave — call us immediately on <a href="tel:0428631931" style={{ color: "#1e90ff", textDecoration: "none" }}>0428 631 931</a>.</p>
+        <p>Yes. We offer <strong style={{ color: "#111", fontWeight: 600 }}>24/7 emergency callouts</strong> for urgent electrical faults and air con failures. If you have a safety issue — sparking outlets, tripped boards that won&apos;t reset, or your system has died in the middle of a heatwave — call us immediately on <a href="tel:0428631931" style={{ color: "#1e90ff", textDecoration: "none" }}>0428 631 931</a>.</p>
         <p style={{ marginTop: ".75rem" }}>Emergency call-out rates do apply outside of normal business hours. We&apos;ll always tell you the cost upfront before we come out so there are no surprises.</p>
       </div>
     ),
@@ -208,7 +208,7 @@ const faqItems: FAQItem[] = [
           ].map(([cause, desc]) => (
             <li key={cause} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
               <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              <strong style={{ color: "#fff", fontWeight: 600 }}>{cause}</strong> — {desc}
+              <strong style={{ color: "#111", fontWeight: 600 }}>{cause}</strong> — {desc}
             </li>
           ))}
         </ul>
@@ -222,7 +222,7 @@ const faqItems: FAQItem[] = [
     question: "Can I do my own electrical work in NSW?",
     answer: (
       <div>
-        <p><strong style={{ color: "#fff", fontWeight: 600 }}>No — not in NSW.</strong> All electrical work beyond very minor tasks (like replacing a lightbulb or resetting a safety switch) must be carried out by a licensed electrician. This is a legal requirement under Australian law.</p>
+        <p><strong style={{ color: "#111", fontWeight: 600 }}>No — not in NSW.</strong> All electrical work beyond very minor tasks (like replacing a lightbulb or resetting a safety switch) must be carried out by a licensed electrician. This is a legal requirement under Australian law.</p>
         <p style={{ marginTop: ".75rem" }}>Unlicensed electrical work is dangerous and can void your home insurance. It can also cause fires, electrocution, and may result in significant fines. If you&apos;re in doubt, call us — we can often quote over the phone for straightforward jobs.</p>
       </div>
     ),
@@ -233,7 +233,7 @@ const faqItems: FAQItem[] = [
     question: "Do you provide written quotes before starting work?",
     answer: (
       <div>
-        <p>Always. We provide <strong style={{ color: "#fff", fontWeight: 600 }}>clear, written quotes</strong> before any work begins. The quote includes:</p>
+        <p>Always. We provide <strong style={{ color: "#111", fontWeight: 600 }}>clear, written quotes</strong> before any work begins. The quote includes:</p>
         <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
           {[
             "Itemised labour and material costs",
@@ -256,7 +256,7 @@ const faqItems: FAQItem[] = [
     question: "Do you offer a warranty on your work?",
     answer: (
       <div>
-        <p>Yes. All workmanship is covered by our <strong style={{ color: "#fff", fontWeight: 600 }}>labour warranty</strong> — if something we installed or repaired fails due to our workmanship, we&apos;ll come back and fix it at no charge.</p>
+        <p>Yes. All workmanship is covered by our <strong style={{ color: "#111", fontWeight: 600 }}>labour warranty</strong> — if something we installed or repaired fails due to our workmanship, we&apos;ll come back and fix it at no charge.</p>
         <p style={{ marginTop: ".75rem" }}>Equipment and product warranties are provided by the manufacturer and typically cover 5 years for air conditioning units and 1–2 years for electrical components. We&apos;ll walk you through any warranties that apply to your job before we finish up.</p>
       </div>
     ),
@@ -284,7 +284,7 @@ export default function FAQPage() {
   };
 
   return (
-    <div style={{ background: "#0a1628", minHeight: "100vh", color: "#fff" }}>
+    <div style={{ background: "#f8faff", minHeight: "100vh", color: "#111" }}>
       <Navbar />
 
       {/* PAGE HERO */}
@@ -352,7 +352,7 @@ export default function FAQPage() {
       </section>
 
       {/* FAQ CONTENT */}
-      <section className="py-16 md:py-24 relative" style={{ background: "#0a1628" }}>
+      <section className="py-16 md:py-24 relative" style={{ background: "#f8faff" }}>
         <div style={{ position: "absolute", width: "28rem", height: "18rem", borderRadius: "50%", background: "rgba(30,144,255,.04)", top: "20%", right: "-6rem", filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", width: "22rem", height: "16rem", borderRadius: "50%", background: "rgba(245,197,24,.04)", bottom: "10%", left: "-4rem", filter: "blur(80px)", pointerEvents: "none" }} />
 
@@ -372,9 +372,9 @@ export default function FAQPage() {
                   fontWeight: 600,
                   cursor: "pointer",
                   letterSpacing: ".03em",
-                  border: activeFilter === key ? "1px solid rgba(30,144,255,.4)" : "1px solid rgba(255,255,255,.1)",
-                  background: activeFilter === key ? "rgba(30,144,255,.15)" : "transparent",
-                  color: activeFilter === key ? "#1e90ff" : "rgba(255,255,255,.5)",
+                  border: activeFilter === key ? "1px solid rgba(30,144,255,.4)" : "1px solid rgba(0,0,0,.12)",
+                  background: activeFilter === key ? "rgba(30,144,255,.1)" : "transparent",
+                  color: activeFilter === key ? "#1e90ff" : "#555",
                   transition: "all .2s",
                 }}
               >
@@ -387,7 +387,7 @@ export default function FAQPage() {
           <div>
             {visibleItems.length === 0 && (
               <div style={{ textAlign: "center", padding: "3rem 1rem" }}>
-                <p className="font-rubik" style={{ color: "rgba(255,255,255,.4)", fontSize: ".9rem" }}>No questions in this category yet.</p>
+                <p className="font-rubik" style={{ color: "#888", fontSize: ".9rem" }}>No questions in this category yet.</p>
               </div>
             )}
             {visibleItems.map((item) => {
@@ -396,7 +396,7 @@ export default function FAQPage() {
                 <div
                   key={item.id}
                   style={{
-                    border: isOpen ? "1px solid rgba(30,144,255,.3)" : "1px solid rgba(255,255,255,.07)",
+                    border: isOpen ? "1px solid rgba(30,144,255,.3)" : "1px solid rgba(0,0,0,.09)",
                     borderRadius: ".875rem",
                     overflow: "hidden",
                     marginBottom: ".75rem",
@@ -413,7 +413,7 @@ export default function FAQPage() {
                       justifyContent: "space-between",
                       gap: "1rem",
                       padding: "1.1rem 1.25rem",
-                      background: isOpen ? "rgba(30,144,255,.06)" : "transparent",
+                      background: isOpen ? "rgba(30,144,255,.05)" : "#fff",
                       border: "none",
                       cursor: "pointer",
                       textAlign: "left",
@@ -422,7 +422,7 @@ export default function FAQPage() {
                   >
                     <span
                       className="font-outfit"
-                      style={{ fontWeight: 600, fontSize: ".95rem", color: "#fff", lineHeight: 1.35, flex: 1 }}
+                      style={{ fontWeight: 600, fontSize: ".95rem", color: "#111", lineHeight: 1.35, flex: 1 }}
                     >
                       {item.question}
                     </span>
@@ -458,10 +458,10 @@ export default function FAQPage() {
                       className="font-rubik"
                       style={{
                         fontSize: ".9rem",
-                        color: "rgba(255,255,255,.65)",
+                        color: "#444",
                         lineHeight: 1.75,
                         paddingTop: ".75rem",
-                        borderTop: "1px solid rgba(255,255,255,.06)",
+                        borderTop: "1px solid rgba(0,0,0,.07)",
                       }}
                     >
                       {item.answer}
@@ -476,7 +476,7 @@ export default function FAQPage() {
           <div
             style={{
               marginTop: "3rem",
-              background: "linear-gradient(135deg,rgba(30,144,255,.08),rgba(10,22,40,.9))",
+              background: "linear-gradient(135deg,rgba(30,144,255,.06),rgba(240,246,255,1))",
               border: "1px solid rgba(30,144,255,.2)",
               borderRadius: "1rem",
               padding: "2rem",
@@ -487,8 +487,8 @@ export default function FAQPage() {
             }}
           >
             <div style={{ flex: 1, minWidth: "200px" }}>
-              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#fff", fontSize: "1.1rem", marginBottom: ".4rem" }}>Still have a question?</h3>
-              <p className="font-rubik" style={{ color: "rgba(255,255,255,.55)", fontSize: ".875rem", lineHeight: 1.6 }}>Can&apos;t find what you&apos;re looking for? Call us or send a message and we&apos;ll get back to you straight away.</p>
+              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.1rem", marginBottom: ".4rem" }}>Still have a question?</h3>
+              <p className="font-rubik" style={{ color: "#555", fontSize: ".875rem", lineHeight: 1.6 }}>Can&apos;t find what you&apos;re looking for? Call us or send a message and we&apos;ll get back to you straight away.</p>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: ".75rem" }}>
               <a
@@ -518,9 +518,9 @@ export default function FAQPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: ".75rem",
-                  background: "rgba(255,255,255,.05)",
-                  color: "#fff",
-                  border: "1px solid rgba(255,255,255,.15)",
+                  background: "#f0f4ff",
+                  color: "#111",
+                  border: "1px solid rgba(30,144,255,.2)",
                   fontFamily: "'Outfit',sans-serif",
                   fontWeight: 600,
                   padding: ".625rem 1.25rem",
@@ -537,13 +537,13 @@ export default function FAQPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 relative" style={{ background: "#060e1a" }}>
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg,transparent,rgba(30,144,255,.15),transparent)" }} />
+      <section className="py-16 relative" style={{ background: "#ffffff" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg,transparent,rgba(30,144,255,.2),transparent)" }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-outfit" style={{ fontWeight: 900, fontSize: "clamp(1.6rem,3.5vw,2.5rem)", color: "#fff", marginBottom: ".75rem" }}>
+          <h2 className="font-outfit" style={{ fontWeight: 900, fontSize: "clamp(1.6rem,3.5vw,2.5rem)", color: "#111", marginBottom: ".75rem" }}>
             Ready to get the job done?
           </h2>
-          <p className="font-rubik" style={{ color: "rgba(255,255,255,.55)", fontSize: ".95rem", marginBottom: "2rem" }}>
+          <p className="font-rubik" style={{ color: "#555", fontSize: ".95rem", marginBottom: "2rem" }}>
             Free quotes, upfront pricing, local NSW tradies. Call or request a quote online.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
@@ -571,9 +571,9 @@ export default function FAQPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: ".75rem",
-                background: "rgba(255,255,255,.05)",
-                color: "#fff",
-                border: "1px solid rgba(255,255,255,.15)",
+                background: "#f0f4ff",
+                color: "#111",
+                border: "1px solid rgba(30,144,255,.2)",
                 fontFamily: "'Outfit',sans-serif",
                 fontWeight: 600,
                 padding: ".875rem 2rem",

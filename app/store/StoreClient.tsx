@@ -85,8 +85,7 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          productName: product.name,
-          priceInCents: product.price,
+          productId: product.id,
           quantity: 1,
         }),
       });
@@ -158,7 +157,7 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
 
 export default function StorePage() {
   return (
-    <div className="min-h-screen bg-navy">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
 
       {/* Hero */}

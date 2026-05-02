@@ -322,7 +322,7 @@ export default function ServicesClient() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="bg-navy rounded-2xl p-6 border border-gray-100"
+                className="bg-gray-50 rounded-2xl p-6 border border-gray-200"
               >
                 <h3 className="font-outfit font-bold text-gray-900 text-base mb-2">{item.title}</h3>
                 <p className="font-rubik text-gray-500 text-sm leading-relaxed">{item.body}</p>
@@ -333,7 +333,7 @@ export default function ServicesClient() {
       </section>
 
       {/* ── Final CTA ── */}
-      <section className="py-16 bg-navy">
+      <section className="py-16 bg-white border-t border-gray-100">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

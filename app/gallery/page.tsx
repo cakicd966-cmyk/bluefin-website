@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGallery } from "@/lib/content";
 import GalleryClient from "./GalleryClient";
 
 export const metadata: Metadata = {
@@ -14,11 +15,14 @@ export const metadata: Metadata = {
     title: "Our Work | Air Con & Electrical Installations Wollongong",
     description:
       "Completed air-conditioning and electrical jobs across Wollongong, Illawarra and Sydney by Bluefin.",
-    url: "https://bluefinnairandelec.netlify.app/gallery",
+    url: "https://www.bluefinaircon.com.au/gallery",
     images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Bluefin Air-Conditioning & Electrical — completed jobs Wollongong" }],
   },
 };
 
+export const revalidate = 0;
+
 export default function GalleryPage() {
-  return <GalleryClient />;
+  const galleryItems = getGallery();
+  return <GalleryClient items={galleryItems} />;
 }

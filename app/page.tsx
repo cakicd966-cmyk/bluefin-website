@@ -7,6 +7,9 @@ import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { getTestimonials, getSettings } from "@/lib/content";
+
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "Air Conditioning & Electrician Wollongong",
@@ -21,22 +24,25 @@ export const metadata: Metadata = {
     title: "Air Conditioning & Electrician Wollongong | Bluefin",
     description:
       "Wollongong's trusted air con & electrical specialists. Split systems, ducted AC, switchboard upgrades & 24/7 emergency callouts. Call 0428 631 931.",
-    url: "https://bluefinnairandelec.netlify.app",
+    url: "https://www.bluefinaircon.com.au",
     images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Bluefin Air-Conditioning & Electrical — Wollongong & Illawarra" }],
   },
 };
 
 export default function Home() {
+  const testimonials = getTestimonials();
+  const settings = getSettings();
+
   return (
     <main className="min-h-screen bg-navy">
-      <Navbar />
-      <Hero />
+      <Navbar settings={settings} />
+      <Hero settings={settings} />
       <Services />
       <WhyChooseUs />
       <HowItWorks />
-      <Testimonials />
-      <Contact />
-      <Footer />
+      <Testimonials testimonials={testimonials} />
+      <Contact settings={settings} />
+      <Footer settings={settings} />
     </main>
   );
 }

@@ -25,7 +25,7 @@ export function generateMetadata({ params }: Props): Metadata {
     openGraph: {
       title: post.seo.title,
       description: post.seo.description,
-      url: `https://bluefinnairandelec.netlify.app/blog/${post.slug}`,
+      url: `https://www.bluefinaircon.com.au/blog/${post.slug}`,
       images: [{ url: post.image, alt: post.imageAlt }],
       type: "article",
       publishedTime: post.date,
@@ -56,17 +56,17 @@ export default function BlogPostPage({ params }: Props) {
     author: {
       "@type": "Organization",
       name: "Bluefin Air-Conditioning & Electrical",
-      url: "https://bluefinnairandelec.netlify.app",
+      url: "https://www.bluefinaircon.com.au",
     },
     publisher: {
       "@type": "Organization",
       name: "Bluefin Air-Conditioning & Electrical",
-      url: "https://bluefinnairandelec.netlify.app",
+      url: "https://www.bluefinaircon.com.au",
     },
     datePublished: post.date,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://bluefinnairandelec.netlify.app/blog/${post.slug}`,
+      "@id": `https://www.bluefinaircon.com.au/blog/${post.slug}`,
     },
   };
 

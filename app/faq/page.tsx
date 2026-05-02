@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Air Con & Electrical FAQs | Wollongong",
     description:
       "Common questions about air conditioning and electrical services in Wollongong and the Illawarra region.",
-    url: "https://bluefinnairandelec.netlify.app/faq",
+    url: "https://www.bluefinaircon.com.au/faq",
   },
 };
 

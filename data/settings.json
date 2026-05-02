@@ -1,0 +1,14 @@
+{
+  "phone": "0428 631 931",
+  "email": "info@bluefinaircon.com.au",
+  "heroHeadline": "Wollongong's Local Air-Con & Electrical Experts",
+  "heroSubtext": "Trusted by Wollongong, Illawarra and Sydney homeowners for over a decade. From air con installation to full electrical fitouts — we show up on time and get the job done right.",
+  "heroBadge": "Wollongong & Illawarra — Licensed & Insured",
+  "trustBadges": ["Licensed & Insured", "5-Star Rated", "Same-Day Response"],
+  "serviceArea": "Wollongong, Shellharbour, Kiama, Dapto, Illawarra and Greater Sydney",
+  "hours": {
+    "weekdays": "7:00am – 5:30pm",
+    "saturday": "8:00am – 2:00pm",
+    "emergency": "24/7 Available"
+  }
+}

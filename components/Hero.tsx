@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Phone, ChevronDown, Shield, Star, Zap } from "lucide-react";
+import type { SiteSettings } from "@/lib/content";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -12,11 +13,23 @@ const fadeUp = {
   }),
 };
 
-export default function Hero() {
+const BADGE_ICONS: Record<string, typeof Shield> = {
+  "Licensed & Insured": Shield,
+  "5-Star Rated": Star,
+  "Same-Day Response": Zap,
+};
+
+export default function Hero({ settings }: { settings?: SiteSettings }) {
+  const phone = settings?.phone || "0428 631 931";
+  const badge = settings?.heroBadge || "Wollongong & Illawarra — Licensed & Insured";
+  const headline = settings?.heroHeadline || "Wollongong's Local Air-Con & Electrical Experts";
+  const subtext = settings?.heroSubtext || "Trusted by Wollongong, Illawarra and Sydney homeowners for over a decade. From air con installation to full electrical fitouts — we show up on time and get the job done right.";
+  const trustBadges = settings?.trustBadges || ["Licensed & Insured", "5-Star Rated", "Same-Day Response"];
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-hero-gradient pt-16"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-hero-gradient pt-20 md:pt-[120px]"
     >
       {/* Background grid */}
       <div
@@ -46,7 +59,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 bg-electric/10 border border-electric/25 text-electric text-xs font-outfit font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-wider"
             >
               <span className="w-2 h-2 rounded-full bg-gold animate-pulse-slow" />
-              Wollongong & Illawarra — Licensed & Insured
+              {badge}
             </motion.div>
 
             {/* Headline */}
@@ -57,10 +70,7 @@ export default function Hero() {
               custom={1}
               className="font-outfit font-black text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl leading-[1.05] text-gray-900 mb-6"
             >
-              Wollongong&apos;s Local{" "}
-              <span className="text-electric">Air-Con</span> &{" "}
-              <span className="text-gold">Electrical</span>{" "}
-              Experts
+              {headline}
             </motion.h1>
 
             {/* Subtext */}
@@ -71,7 +81,7 @@ export default function Hero() {
               custom={2}
               className="font-rubik text-gray-600 text-lg leading-relaxed mb-8 max-w-lg"
             >
-              Trusted by Wollongong, Illawarra and Sydney homeowners for over a decade. From air con installation to full electrical fitouts — we show up on time and get the job done right.
+              {subtext}
             </motion.p>
 
             {/* CTAs */}
@@ -90,11 +100,11 @@ export default function Hero() {
                 <ChevronDown className="w-4 h-4 rotate-[-90deg]" />
               </a>
               <a
-                href="tel:0428631931"
+                href={`tel:${phone.replace(/\s/g, "")}`}
                 className="inline-flex items-center justify-center gap-3 bg-white hover:bg-gray-50 border border-gray-200 hover:border-electric/40 text-gray-900 font-outfit font-semibold text-base px-7 py-4 rounded-xl transition-all duration-200 cursor-pointer shadow-sm"
               >
                 <Phone className="w-5 h-5 text-electric" />
-                0428 631 931
+                {phone}
               </a>
             </motion.div>
 
@@ -106,16 +116,15 @@ export default function Hero() {
               custom={4}
               className="flex flex-wrap gap-5"
             >
-              {[
-                { icon: Shield, label: "Licensed & Insured" },
-                { icon: Star, label: "5-Star Rated" },
-                { icon: Zap, label: "Same-Day Response" },
-              ].map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-2 text-sm text-gray-500 font-rubik">
-                  <Icon className="w-4 h-4 text-gold-dark shrink-0" />
-                  <span>{label}</span>
-                </div>
-              ))}
+              {trustBadges.map((label) => {
+                const Icon = BADGE_ICONS[label] || Shield;
+                return (
+                  <div key={label} className="flex items-center gap-2 text-sm text-gray-500 font-rubik">
+                    <Icon className="w-4 h-4 text-gold-dark shrink-0" />
+                    <span>{label}</span>
+                  </div>
+                );
+              })}
             </motion.div>
           </div>
 
@@ -125,64 +134,34 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="hidden lg:block"
+            style={{ background: "transparent" }}
           >
-            <div className="relative flex justify-center">
-              {/* Blue glow behind logo */}
-              <div className="absolute inset-0 rounded-3xl bg-electric/15 blur-3xl scale-110 pointer-events-none" />
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0, background: "transparent" }}>
+              {/* Logo with blue glow */}
+              <img
+                src="/bluefin-logo.png"
+                alt="Bluefin Air-Conditioning & Electrical"
+                style={{
+                  width: 480,
+                  height: "auto",
+                  display: "block",
+                  background: "transparent",
+                  filter:
+                    "drop-shadow(0 0 25px rgba(30, 111, 217, 0.9)) drop-shadow(0 0 50px rgba(30, 111, 217, 0.6)) drop-shadow(0 0 80px rgba(30, 111, 217, 0.3))",
+                }}
+              />
 
-              {/* Logo card */}
-              <div className="relative bg-white border border-electric/20 rounded-3xl p-14 shadow-2xl shadow-electric/10 flex flex-col items-center justify-center text-center w-full">
-                {/* Icon */}
-                <div className="w-24 h-24 rounded-2xl bg-electric flex items-center justify-center mb-6 shadow-xl shadow-electric/30">
-                  <svg viewBox="0 0 24 24" className="w-12 h-12 text-white fill-current">
-                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-
-                {/* Wordmark */}
-                <h2 className="font-outfit font-black text-5xl text-gray-900 tracking-tight leading-none mb-1">
-                  BLUEFIN
-                </h2>
-                <p className="font-outfit font-bold text-electric text-sm uppercase tracking-[0.25em] mt-2">
-                  Air-Con & Electrical
-                </p>
-
-                {/* Divider */}
-                <div className="w-16 h-px bg-electric/20 my-5" />
-
-                {/* Stars */}
-                <div className="flex items-center gap-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-gold fill-gold" />
-                  ))}
-                </div>
-                <p className="font-rubik text-gray-400 text-xs">Wollongong & Illawarra</p>
+              {/* Stars */}
+              <div className="flex items-center gap-1" style={{ marginTop: 2 }}>
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} style={{ color: "#F5C518", fontSize: 22 }}>★</span>
+                ))}
               </div>
 
-              {/* Floating stat badge */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-5 -right-5 bg-gold text-gray-900 rounded-xl px-4 py-3 shadow-xl"
-              >
-                <p className="font-outfit font-black text-2xl leading-none">500+</p>
-                <p className="font-rubik text-xs font-semibold opacity-80 mt-0.5">Jobs Completed</p>
-              </motion.div>
-
-              {/* Floating phone card */}
-              <motion.div
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-5 -left-5 bg-white border border-electric/30 rounded-xl px-4 py-3 shadow-xl flex items-center gap-3"
-              >
-                <div className="w-8 h-8 rounded-full bg-electric/15 flex items-center justify-center">
-                  <Phone className="w-4 h-4 text-electric" />
-                </div>
-                <div>
-                  <p className="text-gray-400 text-[10px] font-rubik">Call us anytime</p>
-                  <p className="text-gray-900 font-outfit font-bold text-sm">0428 631 931</p>
-                </div>
-              </motion.div>
+              {/* Location */}
+              <p style={{ color: "#888", fontSize: 13, marginTop: 2 }} className="font-rubik">
+                Wollongong &amp; Illawarra
+              </p>
             </div>
           </motion.div>
         </div>

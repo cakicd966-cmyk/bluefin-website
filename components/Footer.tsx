@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Phone, ShieldCheck, Zap } from "lucide-react";
+import type { SiteSettings } from "@/lib/content";
 
 const footerLinks = {
   Services: [
@@ -14,7 +15,9 @@ const footerLinks = {
   More: ["Fin Facts Blog", "Fin Apparel Store"],
 };
 
-export default function Footer() {
+export default function Footer({ settings }: { settings?: SiteSettings }) {
+  const phone = settings?.phone || "{phone}";
+  const serviceArea = settings?.serviceArea || "Wollongong, Illawarra, Shellharbour, Kiama, Dapto & Greater Sydney";
   const year = new Date().getFullYear();
 
   return (
@@ -37,11 +40,11 @@ export default function Footer() {
               </p>
             </div>
             <a
-              href="tel:0428631931"
+              href={`tel:${phone.replace(/\s/g, "")}`}
               className="flex items-center gap-2 bg-gold hover:bg-gold-light text-gray-900 font-outfit font-bold px-6 py-3 rounded-xl transition-all duration-200 btn-glow cursor-pointer text-sm shrink-0"
             >
               <Phone className="w-4 h-4" />
-              0428 631 931
+              {phone}
             </a>
           </motion.div>
         </div>
@@ -69,7 +72,7 @@ export default function Footer() {
 
             {/* Service area */}
             <p className="font-rubik text-white/30 text-xs">
-              Serving Wollongong, Illawarra, Shellharbour, Kiama, Dapto & Greater Sydney.
+              Serving {serviceArea}.
             </p>
           </div>
 

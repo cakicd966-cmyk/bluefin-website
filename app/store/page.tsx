@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Fin Apparel | Official Bluefin Merch",
     description: "Official merchandise from Wollongong's favourite air-con and electrical team.",
-    url: "https://bluefinnairandelec.netlify.app/store",
+    url: "https://www.bluefinaircon.com.au/store",
     images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Bluefin Air-Conditioning & Electrical Merch" }],
   },
 };

@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Menu, X, Zap } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
+import Image from "next/image";
+import type { SiteSettings } from "@/lib/content";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -13,7 +15,8 @@ const navLinks = [
   { label: "Fin Apparel", href: "/store" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ settings }: { settings?: SiteSettings }) {
+  const phone = settings?.phone || "{phone}";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -30,37 +33,32 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg shadow-gray-200/80 border-b border-electric/10"
-          : "bg-navy/80 backdrop-blur-sm"
+          ? "bg-white shadow-lg shadow-gray-200/80 border-b border-electric/10"
+          : "bg-white border-b border-gray-100"
       }`}
+      style={{ minHeight: "80px" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-[120px] w-full overflow-hidden box-border">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="relative">
-              <div className="w-9 h-9 rounded-lg bg-electric flex items-center justify-center shadow-lg group-hover:shadow-electric/40 transition-shadow duration-300">
-                <Zap className="w-5 h-5 text-white" />
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-gold border-2 border-white animate-pulse-slow" />
-            </div>
-            <div className="leading-tight">
-              <span className="block text-gray-900 font-bold text-sm font-outfit tracking-wide">
-                BLUEFIN
-              </span>
-              <span className="block text-gold-dark text-[10px] font-outfit font-semibold tracking-widest uppercase">
-                Air-Con & Electrical
-              </span>
-            </div>
+          <a href="/" className="flex items-center cursor-pointer flex-shrink-0 mr-5">
+            <Image
+              src="/bluefin-header-logo-cropped.png"
+              alt="Bluefin Air-Conditioning & Electrical"
+              width={1300}
+              height={547}
+              style={{ height: 70, width: "auto", display: "block", background: "transparent", mixBlendMode: "normal" }}
+              priority
+            />
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-5">
+          <div className="hidden md:flex items-center flex-1 justify-around" style={{ minWidth: 400 }}>
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-rubik font-medium transition-colors duration-200 relative group ${
+                className={`text-sm font-rubik font-medium transition-colors duration-200 relative group px-[15px] ${
                   link.label === "Fin Apparel"
                     ? "text-electric font-semibold"
                     : "text-gray-600 hover:text-gray-900"
@@ -75,11 +73,11 @@ export default function Navbar() {
           {/* Phone CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="tel:0428631931"
+              href={`tel:${phone.replace(/\s/g, "")}`}
               className="flex items-center gap-2 bg-gold hover:bg-gold-light text-gray-900 font-bold font-outfit px-4 py-2.5 rounded-lg transition-all duration-200 btn-glow cursor-pointer text-sm"
             >
               <Phone className="w-4 h-4" />
-              0428 631 931
+              {phone}
             </a>
           </div>
 
@@ -120,11 +118,11 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="tel:0428631931"
+                href={`tel:${phone.replace(/\s/g, "")}`}
                 className="flex items-center gap-2 bg-gold text-gray-900 font-bold font-outfit px-4 py-3 rounded-lg mt-3 w-full justify-center cursor-pointer"
               >
                 <Phone className="w-4 h-4" />
-                0428 631 931
+                {phone}
               </a>
             </div>
           </motion.div>

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "cat": "aircon",
+    "catLabel": "Air Con",
+    "title": "Split System Install",
+    "subtitle": "Wollongong, NSW · Mitsubishi 7kW",
+    "image": null
+  },
+  {
+    "id": 2,
+    "cat": "electrical",
+    "catLabel": "Electrical",
+    "title": "Switchboard Upgrade",
+    "subtitle": "Illawarra, NSW · 3-phase upgrade",
+    "image": null
+  },
+  {
+    "id": 3,
+    "cat": "aircon",
+    "catLabel": "Air Con",
+    "title": "Ducted System — 4 Bedroom Home",
+    "subtitle": "Shellharbour, NSW · Daikin 14kW",
+    "image": null
+  },
+  {
+    "id": 4,
+    "cat": "commercial",
+    "catLabel": "Commercial",
+    "title": "Office Cassette Units",
+    "subtitle": "Wollongong CBD · 3x Samsung cassettes",
+    "image": null
+  },
+  {
+    "id": 5,
+    "cat": "electrical",
+    "catLabel": "Electrical",
+    "title": "LED Downlight Fitout",
+    "subtitle": "Kiama, NSW · 24x LED downlights",
+    "image": null
+  },
+  {
+    "id": 6,
+    "cat": "aircon",
+    "catLabel": "Air Con",
+    "title": "Multi-Head Split System",
+    "subtitle": "Dapto, NSW · LG 3-zone system",
+    "image": null
+  }
+]

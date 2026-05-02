@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 
-Sitemap: https://bluefinnairandelec.netlify.app/sitemap.xml
+Sitemap: https://www.bluefinaircon.com.au/sitemap.xml

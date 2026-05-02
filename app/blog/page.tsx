@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Fin Facts — Air Con & Electrical Tips | Illawarra",
     description:
       "Expert advice from Bluefin's Wollongong-based team. Tips for Illawarra and Sydney homeowners.",
-    url: "https://bluefinnairandelec.netlify.app/blog",
+    url: "https://www.bluefinaircon.com.au/blog",
     images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Fin Facts — Air Con & Electrical Tips from Bluefin" }],
   },
 };
@@ -53,7 +53,7 @@ export default function BlogPage() {
       </section>
 
       {/* Blog grid */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => (

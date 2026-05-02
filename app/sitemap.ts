@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { posts } from "@/app/blog/posts-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://bluefinnairandelec.netlify.app";
+  const base = "https://www.bluefinaircon.com.au";
 
   return [
     {

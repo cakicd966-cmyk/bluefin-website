@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah M.",
+    "location": "Wollongong, NSW",
+    "rating": 5,
+    "text": "Bluefin installed a new ducted system in our home and the whole process was seamless. They arrived on time, the install was super clean, and the team were friendly and professional. Highly recommend to anyone in the area!",
+    "service": "Ducted A/C Installation",
+    "initials": "SM"
+  },
+  {
+    "id": 2,
+    "name": "Jason R.",
+    "location": "Shellharbour, NSW",
+    "rating": 5,
+    "text": "Called them on a Friday afternoon when my split system stopped working in 38-degree heat. They were at my house within a couple of hours and had it fixed before dinner. Brilliant service, fair price. Will definitely use again.",
+    "service": "Emergency A/C Repair",
+    "initials": "JR"
+  },
+  {
+    "id": 3,
+    "name": "The Hendersons",
+    "location": "Kiama, NSW",
+    "rating": 5,
+    "text": "We had them do a full switchboard upgrade and install new power points throughout the house. The work was neat, tidy, and passed inspection first go. Very knowledgeable team who explained everything clearly. Top tradies.",
+    "service": "Electrical & Switchboard",
+    "initials": "TH"
+  }
+]

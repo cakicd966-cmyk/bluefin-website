@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     "Licensed air-conditioning and electrical specialists serving Wollongong, Illawarra and Sydney. Split systems, ducted air con, switchboard upgrades & emergency callouts. Call 0428 631 931.",
   keywords:
     "air conditioning Wollongong, electrician Wollongong, air con Illawarra, emergency electrician Wollongong, ducted air conditioning Wollongong, split system installation Illawarra, electrician Sydney, air con servicing Wollongong",
-  metadataBase: new URL("https://bluefinnairandelec.netlify.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.bluefinaircon.com.au"),
   alternates: {
     canonical: "/",
   },
@@ -47,11 +48,11 @@ export default function RootLayout({
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://bluefinnairandelec.netlify.app",
+    "@id": "https://www.bluefinaircon.com.au",
     "name": "Bluefin Air-Conditioning & Electrical",
-    "image": "https://bluefinnairandelec.netlify.app/favicon.svg",
+    "image": "https://www.bluefinaircon.com.au/bluefin-logo.png",
     "description": "Licensed air-conditioning and electrical specialists serving Wollongong, Illawarra and Sydney. Split systems, ducted air con, switchboard upgrades and 24/7 emergency callouts.",
-    "url": "https://bluefinnairandelec.netlify.app",
+    "url": "https://www.bluefinaircon.com.au",
     "telephone": "+61428631931",
     "email": "info@bluefinairandelec.com.au",
     "priceRange": "$$",
@@ -109,12 +110,28 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         />
       </head>
       <body>{children}</body>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-H64J9WE1D5"
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-H64J9WE1D5');
+        `}
+      </Script>
     </html>
   );
 }

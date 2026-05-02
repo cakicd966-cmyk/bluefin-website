@@ -115,7 +115,7 @@ function renderBlock(block: ContentBlock, index: number) {
 
 export default function BlogPostClient({ post, related }: { post: BlogPost; related: BlogPost[] }) {
   return (
-    <div className="min-h-screen bg-navy">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
 
       {/* ── Hero image ── */}

@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     title: "About Bluefin | Wollongong Air Con & Electrical",
     description:
       "Family-owned Wollongong trades business serving Illawarra and Sydney. Licensed & insured. Contractor Licence 982390C.",
-    url: "https://bluefinnairandelec.netlify.app/about",
+    url: "https://www.bluefinaircon.com.au/about",
     images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Bluefin Air-Conditioning & Electrical — Wollongong" }],
   },
 };
 
 export default function AboutPage() {
   return (
-    <div style={{ background: "#0a1628", minHeight: "100vh", color: "#fff" }}>
+    <div style={{ background: "#f8faff", minHeight: "100vh", color: "#111" }}>
       <Navbar />
 
       {/* PAGE HERO */}
@@ -121,7 +121,7 @@ export default function AboutPage() {
       </section>
 
       {/* STATS BAR */}
-      <div style={{ background: "#060e1a", borderTop: "1px solid rgba(255,255,255,.06)", borderBottom: "1px solid rgba(255,255,255,.06)" }}>
+      <div style={{ background: "#ffffff", borderTop: "1px solid rgba(0,0,0,.07)", borderBottom: "1px solid rgba(0,0,0,.07)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
@@ -132,7 +132,7 @@ export default function AboutPage() {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="font-outfit" style={{ color: "#f5c518", fontSize: "2.5rem", lineHeight: 1, fontWeight: 900 }}>{stat.value}</p>
-                <p className="font-rubik" style={{ color: "rgba(255,255,255,.5)", fontSize: ".8rem", marginTop: ".25rem" }}>{stat.label}</p>
+                <p className="font-rubik" style={{ color: "#666", fontSize: ".8rem", marginTop: ".25rem" }}>{stat.label}</p>
               </div>
             ))}
           </div>
@@ -140,7 +140,7 @@ export default function AboutPage() {
       </div>
 
       {/* OUR STORY */}
-      <section className="py-20 md:py-28 relative" style={{ background: "#0a1628" }}>
+      <section className="py-20 md:py-28 relative" style={{ background: "#f8faff" }}>
         <div
           style={{
             position: "absolute",
@@ -179,14 +179,14 @@ export default function AboutPage() {
               </span>
               <h2
                 className="font-outfit"
-                style={{ fontWeight: 900, fontSize: "clamp(1.7rem,3.5vw,2.5rem)", color: "#fff", marginBottom: "1.5rem" }}
+                style={{ fontWeight: 900, fontSize: "clamp(1.7rem,3.5vw,2.5rem)", color: "#111", marginBottom: "1.5rem" }}
               >
                 From One Van to a Trusted{" "}
                 <span style={{ color: "#1e90ff" }}>NSW Team</span>
               </h2>
               <div
                 className="font-rubik"
-                style={{ color: "rgba(255,255,255,.65)", fontSize: ".95rem", lineHeight: 1.85, display: "flex", flexDirection: "column", gap: "1rem" }}
+                style={{ color: "#444", fontSize: ".95rem", lineHeight: 1.85, display: "flex", flexDirection: "column", gap: "1rem" }}
               >
                 <p>Bluefin was founded in 2012 by a qualified electrician who&apos;d spent years watching customers get burned by dodgy quotes, no-show tradies, and shoddy workmanship. He&apos;d had enough. So he went out on his own.</p>
                 <p>Starting with residential air con installs around Western Sydney, the business grew fast — not through ads, but through referrals. Neighbours telling neighbours. That&apos;s still how most of our work comes in today.</p>
@@ -257,7 +257,7 @@ export default function AboutPage() {
                         height: "1rem",
                         borderRadius: "50%",
                         background: "#1e90ff",
-                        border: "3px solid #0a1628",
+                        border: "3px solid #f8faff",
                         boxShadow: "0 0 0 3px rgba(30,144,255,.3)",
                       }}
                     />
@@ -273,8 +273,8 @@ export default function AboutPage() {
                       }}
                     />
                     <p className="font-outfit" style={{ color: "#f5c518", fontSize: ".8rem", fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", marginBottom: ".25rem" }}>{item.year}</p>
-                    <h4 className="font-outfit" style={{ fontWeight: 700, color: "#fff", fontSize: "1rem", marginBottom: ".3rem" }}>{item.title}</h4>
-                    <p className="font-rubik" style={{ color: "rgba(255,255,255,.55)", fontSize: ".875rem", lineHeight: 1.6 }}>{item.desc}</p>
+                    <h4 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1rem", marginBottom: ".3rem" }}>{item.title}</h4>
+                    <p className="font-rubik" style={{ color: "#555", fontSize: ".875rem", lineHeight: 1.6 }}>{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -285,7 +285,7 @@ export default function AboutPage() {
       </section>
 
       {/* MEET THE TEAM */}
-      <section className="py-20 md:py-28 relative" style={{ background: "#060e1a" }}>
+      <section className="py-20 md:py-28 relative" style={{ background: "#ffffff" }}>
         <div
           style={{
             position: "absolute",
@@ -332,11 +332,11 @@ export default function AboutPage() {
             </span>
             <h2
               className="font-outfit"
-              style={{ fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "#fff", marginBottom: ".75rem" }}
+              style={{ fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "#111", marginBottom: ".75rem" }}
             >
               Meet the <span style={{ color: "#1e90ff" }}>Team</span>
             </h2>
-            <p className="font-rubik" style={{ color: "rgba(255,255,255,.6)", maxWidth: "36rem", margin: "0 auto", lineHeight: 1.7 }}>
+            <p className="font-rubik" style={{ color: "#555", maxWidth: "36rem", margin: "0 auto", lineHeight: 1.7 }}>
               Every job is done by a real, licensed tradie — not a sub-contractor you&apos;ve never met. Here&apos;s who&apos;s behind the Bluefin name.
             </p>
           </div>
@@ -345,7 +345,7 @@ export default function AboutPage() {
             {/* Matt T */}
             <div
               style={{
-                background: "#0f2040",
+                background: "#f0f6ff",
                 border: "1px solid rgba(30,144,255,.15)",
                 borderRadius: "1rem",
                 padding: "1.5rem",
@@ -371,11 +371,11 @@ export default function AboutPage() {
               >
                 MT
               </div>
-              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#fff", fontSize: "1.15rem", marginBottom: ".25rem" }}>Matt T.</h3>
+              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.15rem", marginBottom: ".25rem" }}>Matt T.</h3>
               <p className="font-outfit" style={{ color: "#f5c518", fontSize: ".75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".75rem" }}>
                 Founder &amp; Lead Electrician
               </p>
-              <p className="font-rubik" style={{ color: "rgba(255,255,255,.6)", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
+              <p className="font-rubik" style={{ color: "#444", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
                 A-grade electrician with 15+ years in the field. Matt started Bluefin after years of seeing customers get let down by other tradies. He still gets on the tools every day.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: ".4rem" }}>
@@ -387,7 +387,7 @@ export default function AboutPage() {
             {/* Jake W */}
             <div
               style={{
-                background: "#0f2040",
+                background: "#f0f6ff",
                 border: "1px solid rgba(30,144,255,.15)",
                 borderRadius: "1rem",
                 padding: "1.5rem",
@@ -413,11 +413,11 @@ export default function AboutPage() {
               >
                 JW
               </div>
-              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#fff", fontSize: "1.15rem", marginBottom: ".25rem" }}>Jake W.</h3>
+              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.15rem", marginBottom: ".25rem" }}>Jake W.</h3>
               <p className="font-outfit" style={{ color: "#f5c518", fontSize: ".75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".75rem" }}>
                 Senior A/C Technician
               </p>
-              <p className="font-rubik" style={{ color: "rgba(255,255,255,.6)", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
+              <p className="font-rubik" style={{ color: "#444", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
                 Jake is our go-to for complex ducted systems and commercial installs. With a background across all major brands, there&apos;s very little he hasn&apos;t seen — or fixed.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: ".4rem" }}>
@@ -429,7 +429,7 @@ export default function AboutPage() {
             {/* Sam R */}
             <div
               style={{
-                background: "#0f2040",
+                background: "#f0f6ff",
                 border: "1px solid rgba(30,144,255,.15)",
                 borderRadius: "1rem",
                 padding: "1.5rem",
@@ -455,11 +455,11 @@ export default function AboutPage() {
               >
                 SR
               </div>
-              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#fff", fontSize: "1.15rem", marginBottom: ".25rem" }}>Sam R.</h3>
+              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.15rem", marginBottom: ".25rem" }}>Sam R.</h3>
               <p className="font-outfit" style={{ color: "#f5c518", fontSize: ".75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".75rem" }}>
                 Electrician &amp; Service Tech
               </p>
-              <p className="font-rubik" style={{ color: "rgba(255,255,255,.6)", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
+              <p className="font-rubik" style={{ color: "#444", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
                 Sam handles residential installs, service calls, and emergency callouts. Fast, friendly, and leaves every job site cleaner than he found it — customers always comment on it.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: ".4rem" }}>
@@ -471,7 +471,7 @@ export default function AboutPage() {
 
           {/* Hiring note */}
           <div style={{ marginTop: "2.5rem", textAlign: "center" }}>
-            <p className="font-rubik" style={{ color: "rgba(255,255,255,.4)", fontSize: ".85rem" }}>
+            <p className="font-rubik" style={{ color: "#888", fontSize: ".85rem" }}>
               Interested in joining the Bluefin crew?{" "}
               <a href="/#contact" style={{ color: "#1e90ff", textDecoration: "none", fontWeight: 500 }}>Get in touch →</a>
             </p>
@@ -480,7 +480,7 @@ export default function AboutPage() {
       </section>
 
       {/* OUR VALUES */}
-      <section className="py-20 md:py-28 relative" style={{ background: "#0a1628" }}>
+      <section className="py-20 md:py-28 relative" style={{ background: "#f8faff" }}>
         <div
           style={{
             position: "absolute",
@@ -526,10 +526,10 @@ export default function AboutPage() {
             >
               What We Stand For
             </span>
-            <h2 className="font-outfit" style={{ fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "#fff", marginBottom: ".75rem" }}>
-              Our <span style={{ color: "#f5c518" }}>Values</span>
+            <h2 className="font-outfit" style={{ fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "#111", marginBottom: ".75rem" }}>
+              Our <span style={{ color: "#d4a800" }}>Values</span>
             </h2>
-            <p className="font-rubik" style={{ color: "rgba(255,255,255,.6)", maxWidth: "34rem", margin: "0 auto", lineHeight: 1.7 }}>
+            <p className="font-rubik" style={{ color: "#555", maxWidth: "34rem", margin: "0 auto", lineHeight: 1.7 }}>
               These aren&apos;t buzzwords on a wall. They&apos;re the standards every Bluefin job is held to, every single time.
             </p>
           </div>
@@ -581,8 +581,8 @@ export default function AboutPage() {
               <div
                 key={value.title}
                 style={{
-                  background: "linear-gradient(135deg,rgba(30,144,255,.07),#060e1a)",
-                  border: "1px solid rgba(30,144,255,.12)",
+                  background: "#ffffff",
+                  border: "1px solid rgba(30,144,255,.15)",
                   borderRadius: "1rem",
                   padding: "1.5rem",
                 }}
@@ -601,8 +601,8 @@ export default function AboutPage() {
                 >
                   {value.icon}
                 </div>
-                <h3 className="font-outfit" style={{ fontWeight: 700, color: "#fff", fontSize: "1.05rem", marginBottom: ".5rem" }}>{value.title}</h3>
-                <p className="font-rubik" style={{ color: "rgba(255,255,255,.55)", fontSize: ".875rem", lineHeight: 1.65 }}>{value.desc}</p>
+                <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.05rem", marginBottom: ".5rem" }}>{value.title}</h3>
+                <p className="font-rubik" style={{ color: "#555", fontSize: ".875rem", lineHeight: 1.65 }}>{value.desc}</p>
               </div>
             ))}
           </div>
@@ -610,7 +610,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 relative" style={{ background: "#060e1a" }}>
+      <section className="py-16 relative" style={{ background: "#ffffff" }}>
         <div
           style={{
             position: "absolute",
@@ -618,14 +618,14 @@ export default function AboutPage() {
             left: 0,
             right: 0,
             height: "1px",
-            background: "linear-gradient(90deg,transparent,rgba(30,144,255,.15),transparent)",
+            background: "linear-gradient(90deg,transparent,rgba(30,144,255,.2),transparent)",
           }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-outfit" style={{ fontWeight: 900, fontSize: "clamp(1.6rem,3.5vw,2.5rem)", color: "#fff", marginBottom: "1rem" }}>
+          <h2 className="font-outfit" style={{ fontWeight: 900, fontSize: "clamp(1.6rem,3.5vw,2.5rem)", color: "#111", marginBottom: "1rem" }}>
             Ready to work with a team you can trust?
           </h2>
-          <p className="font-rubik" style={{ color: "rgba(255,255,255,.55)", fontSize: ".95rem", marginBottom: "2rem" }}>
+          <p className="font-rubik" style={{ color: "#555", fontSize: ".95rem", marginBottom: "2rem" }}>
             Get a free, no-obligation quote. We&apos;ll get back to you fast.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
@@ -653,9 +653,9 @@ export default function AboutPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: ".75rem",
-                background: "rgba(255,255,255,.05)",
-                color: "#fff",
-                border: "1px solid rgba(255,255,255,.15)",
+                background: "#f0f4ff",
+                color: "#111",
+                border: "1px solid rgba(30,144,255,.2)",
                 fontFamily: "'Outfit',sans-serif",
                 fontWeight: 600,
                 padding: ".875rem 2rem",

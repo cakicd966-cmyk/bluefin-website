@@ -3,8 +3,12 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Phone, MapPin, Clock, Send, CheckCircle, ImagePlus, X } from "lucide-react";
+import type { SiteSettings } from "@/lib/content";
 
-export default function Contact() {
+export default function Contact({ settings }: { settings?: SiteSettings }) {
+  const phone = settings?.phone || "{phone}";
+  const serviceArea = settings?.serviceArea || "Wollongong, Shellharbour, Kiama, Dapto, Illawarra and Greater Sydney";
+  const hours = settings?.hours || { weekdays: "7:00am – 5:30pm", saturday: "8:00am – 2:00pm", emergency: "24/7 Available" };
   const headingRef = useRef(null);
   const inView = useInView(headingRef, { once: true, margin: "-60px" });
   const [submitted, setSubmitted] = useState(false);
@@ -58,10 +62,10 @@ export default function Contact() {
       if (res.ok) {
         setSubmitted(true);
       } else {
-        setError("Something went wrong. Please call us directly on 0428 631 931.");
+        setError("Something went wrong. Please call us directly on {phone}.");
       }
     } catch {
-      setError("Could not send. Please call us on 0428 631 931.");
+      setError("Could not send. Please call us on {phone}.");
     } finally {
       setLoading(false);
     }
@@ -117,10 +121,10 @@ export default function Contact() {
                 <div>
                   <p className="font-rubik text-gray-500 text-xs uppercase tracking-wider">Call Us Direct</p>
                   <a
-                    href="tel:0428631931"
+                    href={`tel:${phone.replace(/\s/g, "")}`}
                     className="font-outfit font-bold text-gray-900 text-xl hover:text-electric transition-colors cursor-pointer"
                   >
-                    0428 631 931
+                    {phone}
                   </a>
                 </div>
               </div>
@@ -134,9 +138,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-rubik text-gray-500 text-xs uppercase tracking-wider mb-1">Service Area</p>
-                  <p className="font-outfit font-semibold text-gray-900 text-sm">Wollongong & Illawarra</p>
+                  <p className="font-outfit font-semibold text-gray-900 text-sm">Wollongong &amp; Illawarra</p>
                   <p className="font-rubik text-gray-500 text-sm mt-1 leading-relaxed">
-                    Serving Wollongong, Shellharbour, Kiama, Dapto, Illawarra and Greater Sydney.
+                    Serving {serviceArea}.
                   </p>
                 </div>
               </div>
@@ -152,9 +156,9 @@ export default function Contact() {
                   <p className="font-rubik text-gray-500 text-xs uppercase tracking-wider mb-2">Hours</p>
                   <div className="space-y-1">
                     {[
-                      ["Mon – Fri", "7:00am – 5:30pm", false],
-                      ["Saturday", "8:00am – 2:00pm", false],
-                      ["Emergency", "24/7 Available", true],
+                      ["Mon – Fri", hours.weekdays, false],
+                      ["Saturday", hours.saturday, false],
+                      ["Emergency", hours.emergency, true],
                     ].map(([day, time, isEmergency]) => (
                       <div key={String(day)} className="flex items-center justify-between gap-4">
                         <span className="font-rubik text-gray-500 text-xs">{day}</span>
@@ -189,7 +193,7 @@ export default function Contact() {
                 <h3 className="font-outfit font-bold text-gray-900 text-2xl">Message Sent!</h3>
                 <p className="font-rubik text-gray-500 text-sm max-w-xs">
                   Thanks! We'll be in touch very soon. For urgent jobs, call us directly on{" "}
-                  <a href="tel:0428631931" className="text-electric font-semibold">0428 631 931</a>.
+                  <a href={`tel:${phone.replace(/\s/g, "")}`} className="text-electric font-semibold">{phone}</a>.
                 </p>
               </motion.div>
             ) : (

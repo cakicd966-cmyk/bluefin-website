@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Air Con & Electrical Services | Wollongong & Illawarra",
     description:
       "Split system & ducted installation, servicing, electrical work and 24/7 emergency callouts across Wollongong and Illawarra. Licensed & insured.",
-    url: "https://bluefinnairandelec.netlify.app/services",
+    url: "https://www.bluefinaircon.com.au/services",
     images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Air Con & Electrical Services — Wollongong & Illawarra" }],
   },
 };

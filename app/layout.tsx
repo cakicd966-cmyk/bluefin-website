@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     ],
     apple: "/favicon.svg",
   },
+  verification: {
+    google: "99WpQNn-RMIp1xGUphf-0FgRxBkQohEGgFQfIOuS1Xc",
+  },
 };
 
 export default function RootLayout({

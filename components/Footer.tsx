@@ -11,7 +11,7 @@ const footerLinks = {
     "Electrical Work",
     "Emergency Callouts",
   ],
-  Company: ["About Us", "FAQ", "Service Areas", "Contact", "Get a Quote"],
+  Company: ["About Us", "FAQ", "Service Areas", "Areas", "Contact", "Get a Quote"],
   More: ["Fin Facts Blog", "Fin Apparel Store"],
 };
 
@@ -103,6 +103,8 @@ export default function Footer({ settings }: { settings?: SiteSettings }) {
                           ? "/services#electrical"
                           : link === "Emergency Callouts"
                           ? "/services#emergency"
+                          : link === "Areas"
+                          ? "/areas"
                           : link === "Service Areas"
                           ? "/services"
                           : link === "Contact"

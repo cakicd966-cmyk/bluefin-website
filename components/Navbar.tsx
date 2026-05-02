@@ -9,6 +9,7 @@ import type { SiteSettings } from "@/lib/content";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
+  { label: "Areas", href: "/areas" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/#contact" },
   { label: "Fin Facts", href: "/blog" },

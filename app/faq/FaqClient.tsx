@@ -70,13 +70,16 @@ const faqItems: FAQItem[] = [
     question: "Do you service my area?",
     answer: (
       <div>
-        <p>We operate across <strong style={{ color: "#111", fontWeight: 600 }}>Greater Sydney and surrounding NSW regions</strong>, including:</p>
+        <p>We operate across the <strong style={{ color: "#111", fontWeight: 600 }}>Illawarra and Wollongong regions</strong>, including:</p>
         <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
           {[
-            "Western Sydney (Penrith, Parramatta, Blacktown, Hills District)",
-            "Inner West & South West Sydney",
-            "Blue Mountains and Hawkesbury region",
-            "Northern suburbs",
+            "Wollongong (all suburbs)",
+            "Shellharbour, Albion Park, Oak Flats",
+            "Kiama, Gerringong, Berry",
+            "Dapto, Horsley, Kanahooka",
+            "Fairy Meadow, Corrimal, Thirroul, Bulli",
+            "Helensburgh and northern Illawarra",
+            "Nowra / Shoalhaven",
           ].map((area) => (
             <li key={area} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
               <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
@@ -84,7 +87,7 @@ const faqItems: FAQItem[] = [
             </li>
           ))}
         </ul>
-        <p style={{ marginTop: ".75rem" }}>Not sure if we cover your area? Just call us on <a href="tel:0428631931" style={{ color: "#1e90ff", textDecoration: "none" }}>0428 631 931</a> or drop us a message — if we can get there, we will.</p>
+        <p style={{ marginTop: ".75rem" }}>See our full <a href="/areas" style={{ color: "#1e90ff", textDecoration: "none" }}>service areas page</a>, or call us on <a href="tel:0428631931" style={{ color: "#1e90ff", textDecoration: "none" }}>0428 631 931</a> — if we can get there, we will.</p>
       </div>
     ),
   },

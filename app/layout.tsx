@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   verification: {
-    google: "99WpQNn-RMIp1xGUphf-0FgRxBkQohEGgFQfIOuS1Xc",
+    google: "HXqS-FY2vnX2ft7YRyIZf9Ce8s-uBihYSRCuyasn2C0",
   },
 };
 
@@ -112,7 +112,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <meta name="google-site-verification" content="99WpQNn-RMIp1xGUphf-0FgRxBkQohEGgFQfIOuS1Xc" />
+        <meta name="google-site-verification" content="HXqS-FY2vnX2ft7YRyIZf9Ce8s-uBihYSRCuyasn2C0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

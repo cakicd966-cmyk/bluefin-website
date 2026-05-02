@@ -11,7 +11,8 @@ const footerLinks = {
     "Electrical Work",
     "Emergency Callouts",
   ],
-  Company: ["About Us", "FAQ", "Service Areas", "Areas", "Contact", "Get a Quote"],
+  Company: ["About Us", "FAQ", "Contact", "Get a Quote"],
+  Areas: ["Wollongong", "Shellharbour", "Kiama", "Dapto", "Fairy Meadow", "Thirroul", "All Areas"],
   More: ["Fin Facts Blog", "Fin Apparel Store"],
 };
 
@@ -52,7 +53,7 @@ export default function Footer({ settings }: { settings?: SiteSettings }) {
 
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-2">
             {/* Logo */}
@@ -103,10 +104,20 @@ export default function Footer({ settings }: { settings?: SiteSettings }) {
                           ? "/services#electrical"
                           : link === "Emergency Callouts"
                           ? "/services#emergency"
-                          : link === "Areas"
+                          : link === "All Areas"
                           ? "/areas"
-                          : link === "Service Areas"
-                          ? "/services"
+                          : link === "Wollongong"
+                          ? "/areas/wollongong"
+                          : link === "Shellharbour"
+                          ? "/areas/shellharbour"
+                          : link === "Kiama"
+                          ? "/areas/kiama"
+                          : link === "Dapto"
+                          ? "/areas/dapto"
+                          : link === "Fairy Meadow"
+                          ? "/areas/fairy-meadow"
+                          : link === "Thirroul"
+                          ? "/areas/thirroul"
                           : link === "Contact"
                           ? "/#contact"
                           : link === "Get a Quote"

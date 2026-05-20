@@ -12,7 +12,7 @@ export default function AdminSettings() {
         <div style={{ marginBottom: "1.75rem" }}>
           <h1 style={{ fontWeight: 800, fontSize: "1.5rem", color: "#fff", marginBottom: ".35rem" }}>Site Settings</h1>
           <p style={{ color: "#9ca3af", fontSize: ".85rem" }}>
-            Update your phone number, business hours, service area, and homepage text.
+            Update contact details, business hours, homepage hero text, and all About page content.
           </p>
         </div>
         <SettingsManager initialSettings={settings} />

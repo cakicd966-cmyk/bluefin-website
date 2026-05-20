@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { getSettings } from "@/lib/content";
+import AnnouncementBanner from "@/components/AnnouncementBanner";
+import MobileCallBar from "@/components/MobileCallBar";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: {
@@ -8,9 +12,7 @@ export const metadata: Metadata = {
   },
   description:
     "Licensed air-conditioning and electrical specialists serving Wollongong, Illawarra and Sydney. Split systems, ducted air con, switchboard upgrades & emergency callouts. Call 0428 631 931.",
-  keywords:
-    "air conditioning Wollongong, electrician Wollongong, air con Illawarra, emergency electrician Wollongong, ducted air conditioning Wollongong, split system installation Illawarra, electrician Sydney, air con servicing Wollongong",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.bluefinaircon.com.au"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || SITE_URL),
   alternates: {
     canonical: "/",
   },
@@ -47,28 +49,44 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const settings = getSettings();
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://www.bluefinaircon.com.au",
+    "@type": ["HVACBusiness", "Electrician"],
+    "@id": SITE_URL,
     "name": "Bluefin Air-Conditioning & Electrical",
-    "image": "https://www.bluefinaircon.com.au/bluefin-logo.png",
+    "image": `${SITE_URL}/bluefin-logo.png`,
     "description": "Licensed air-conditioning and electrical specialists serving Wollongong, Illawarra and Sydney. Split systems, ducted air con, switchboard upgrades and 24/7 emergency callouts.",
-    "url": "https://www.bluefinaircon.com.au",
+    "url": SITE_URL,
     "telephone": "+61428631931",
     "email": "info@bluefinairandelec.com.au",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Wollongong",
+      "addressLocality": "Coalcliff",
       "addressRegion": "NSW",
+      "postalCode": "2508",
       "addressCountry": "AU"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": -34.4248,
-      "longitude": 150.8931
+      "latitude": -34.2543,
+      "longitude": 150.9489
     },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Air Conditioning Contractor Licence",
+        "credentialCategory": "licence",
+        "identifier": "982390C"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Electrical Contractor Licence",
+        "credentialCategory": "licence",
+        "identifier": "L191263"
+      }
+    ],
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -101,11 +119,6 @@ export default function RootLayout({
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Switchboard Upgrades Wollongong" } }
       ]
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "47"
-    },
     "sameAs": []
   };
 
@@ -129,7 +142,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <AnnouncementBanner banner={settings.announcementBanner} />
+        {children}
+        <MobileCallBar phone={settings.phone} />
+      </body>
     </html>
   );
 }

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Menu, X } from "lucide-react";
 import Image from "next/image";
 import type { SiteSettings } from "@/lib/content";
+import { PHONE_NUMBER } from "@/lib/constants";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -16,7 +17,7 @@ const navLinks = [
 ];
 
 export default function Navbar({ settings }: { settings?: SiteSettings }) {
-  const phone = settings?.phone || "{phone}";
+  const phone = settings?.phone || PHONE_NUMBER;
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 

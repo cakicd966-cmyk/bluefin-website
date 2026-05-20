@@ -1,13 +1,22 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getSettings } from "@/lib/content";
 import type { Metadata } from "next";
+import {
+  Clock, ShieldCheck, BarChart2, Users,
+  Star, ThumbsUp, Award, Home, DollarSign,
+  CheckCircle, Heart, Truck, Calendar, Eye, Lock,
+  RefreshCw, MessageCircle, Lightbulb, Thermometer,
+  Wifi, Hammer, Gauge, Settings, Sparkles, Phone,
+  Zap, Wrench, Globe, Target, TrendingUp, MapPin, BadgeCheck,
+} from "lucide-react";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "About Us | Wollongong Air Con & Electrical Specialists",
   description:
     "Family-owned air con & electrical business proudly serving Wollongong, Illawarra and Sydney. Licensed, insured and local. Contractor Licence 982390C.",
-  keywords:
-    "about Bluefin, Wollongong electrician, Illawarra air conditioning, local trades Wollongong, licensed electrician Illawarra",
   alternates: {
     canonical: "/about",
   },
@@ -15,12 +24,50 @@ export const metadata: Metadata = {
     title: "About Bluefin | Wollongong Air Con & Electrical",
     description:
       "Family-owned Wollongong trades business serving Illawarra and Sydney. Licensed & insured. Contractor Licence 982390C.",
-    url: "https://www.bluefinaircon.com.au/about",
+    url: "https://www.bluefinairandelc.com.au/about",
     images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Bluefin Air-Conditioning & Electrical — Wollongong" }],
   },
 };
 
+const VALUES_ICON_MAP: Record<string, React.ElementType> = {
+  clock: Clock, shield: ShieldCheck, chart: BarChart2, users: Users,
+  star: Star, thumbsup: ThumbsUp, award: Award, home: Home,
+  dollar: DollarSign, check: CheckCircle, heart: Heart, truck: Truck,
+  calendar: Calendar, eye: Eye, lock: Lock, refresh: RefreshCw,
+  message: MessageCircle, lightbulb: Lightbulb, thermometer: Thermometer,
+  wifi: Wifi, hammer: Hammer, gauge: Gauge, settings: Settings,
+  sparkles: Sparkles, phone: Phone, zap: Zap, wrench: Wrench,
+  globe: Globe, target: Target, trending: TrendingUp,
+  map: MapPin, badge: BadgeCheck,
+};
+
+function ValueIcon({ icon, color }: { icon: string; color: string }) {
+  const Icon = VALUES_ICON_MAP[icon] ?? Clock;
+  return <Icon width={20} height={20} stroke={color} strokeWidth={2} fill="none" />;
+}
+
+const TEAM_COLORS = [
+  { bg: "linear-gradient(135deg,#1e90ff,#0070e0)", color: "#fff" },
+  { bg: "linear-gradient(135deg,#f5c518,#d4a800)", color: "#060e1a" },
+  { bg: "linear-gradient(135deg,#1e90ff,#f5c518)", color: "#fff" },
+];
+
+// Alternate blue / gold for value icon backgrounds based on index
+const VALUE_ICON_COLORS = ["#1e90ff", "#f5c518", "#1e90ff", "#f5c518", "#1e90ff", "#f5c518"];
+const VALUE_ICON_BG_COLORS = [
+  "rgba(30,144,255,.15)", "rgba(245,197,24,.15)",
+  "rgba(30,144,255,.15)", "rgba(245,197,24,.15)",
+  "rgba(30,144,255,.15)", "rgba(245,197,24,.15)",
+];
+
+const TAG_STYLES: Record<string, { bg: string; color: string }> = {
+  blue: { bg: "rgba(30,144,255,.1)", color: "#1e90ff" },
+  yellow: { bg: "rgba(245,197,24,.1)", color: "#f5c518" },
+};
+
 export default function AboutPage() {
+  const { about, phone } = getSettings();
+
   return (
     <div style={{ background: "#f8faff", minHeight: "100vh", color: "#111" }}>
       <Navbar />
@@ -37,7 +84,6 @@ export default function AboutPage() {
           paddingTop: "5rem",
         }}
       >
-        {/* Grid bg */}
         <div
           style={{
             position: "absolute",
@@ -48,7 +94,6 @@ export default function AboutPage() {
             backgroundSize: "60px 60px",
           }}
         />
-        {/* Orbs */}
         <div
           style={{
             position: "absolute",
@@ -76,9 +121,7 @@ export default function AboutPage() {
           }}
         />
 
-        <div
-          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full"
-        >
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
           <div style={{ maxWidth: "36rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: "1.25rem" }}>
               <a href="/" style={{ color: "rgba(255,255,255,.4)", fontSize: ".8rem", textDecoration: "none", fontFamily: "'Rubik',sans-serif" }}>Home</a>
@@ -101,20 +144,20 @@ export default function AboutPage() {
                 color: "#1e90ff",
               }}
             >
-              Our Story
+              {about.heroBadge}
             </span>
             <h1
               className="font-outfit"
               style={{ fontWeight: 900, fontSize: "clamp(2.2rem,5vw,3.5rem)", lineHeight: 1.05, marginBottom: "1rem", color: "#fff" }}
             >
-              Built on Hard Work &amp;<br />
-              <span style={{ color: "#f5c518" }}>Honest Tradiemanship</span>
+              {about.heroHeadlineMain}<br />
+              <span style={{ color: "#f5c518" }}>{about.heroHeadlineHighlight}</span>
             </h1>
             <p
               className="font-rubik"
               style={{ color: "rgba(255,255,255,.65)", fontSize: "1.05rem", lineHeight: 1.75, maxWidth: "36rem" }}
             >
-              Bluefin Air-Conditioning &amp; Electrical started with a toolbox, a ute, and a commitment to doing things properly. Over a decade later, that hasn&apos;t changed.
+              {about.heroSubtext}
             </p>
           </div>
         </div>
@@ -124,12 +167,7 @@ export default function AboutPage() {
       <div style={{ background: "#ffffff", borderTop: "1px solid rgba(0,0,0,.07)", borderBottom: "1px solid rgba(0,0,0,.07)" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { value: "12+", label: "Years in Business" },
-              { value: "500+", label: "Jobs Completed" },
-              { value: "5.0", label: "Star Google Rating" },
-              { value: "100%", label: "Satisfaction Guaranteed" },
-            ].map((stat) => (
+            {about.stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="font-outfit" style={{ color: "#f5c518", fontSize: "2.5rem", lineHeight: 1, fontWeight: 900 }}>{stat.value}</p>
                 <p className="font-rubik" style={{ color: "#666", fontSize: ".8rem", marginTop: ".25rem" }}>{stat.label}</p>
@@ -181,17 +219,16 @@ export default function AboutPage() {
                 className="font-outfit"
                 style={{ fontWeight: 900, fontSize: "clamp(1.7rem,3.5vw,2.5rem)", color: "#111", marginBottom: "1.5rem" }}
               >
-                From One Van to a Trusted{" "}
-                <span style={{ color: "#1e90ff" }}>NSW Team</span>
+                {about.storyHeadlineMain}{" "}
+                <span style={{ color: "#1e90ff" }}>{about.storyHeadlineHighlight}</span>
               </h2>
               <div
                 className="font-rubik"
                 style={{ color: "#444", fontSize: ".95rem", lineHeight: 1.85, display: "flex", flexDirection: "column", gap: "1rem" }}
               >
-                <p>Bluefin was founded in 2012 by a qualified electrician who&apos;d spent years watching customers get burned by dodgy quotes, no-show tradies, and shoddy workmanship. He&apos;d had enough. So he went out on his own.</p>
-                <p>Starting with residential air con installs around Western Sydney, the business grew fast — not through ads, but through referrals. Neighbours telling neighbours. That&apos;s still how most of our work comes in today.</p>
-                <p>As demand grew, the team expanded. We brought on a dedicated air-con crew and added more licensed electricians. Today, Bluefin handles everything from a simple split system install to full commercial electrical fitouts — always with the same attention to detail that built our reputation in the first place.</p>
-                <p>We&apos;re still locally owned and operated. No franchises, no call centres. When you ring us, you&apos;re talking to someone who&apos;s actually going to show up at your door.</p>
+                {about.storyParagraphs.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
               </div>
             </div>
 
@@ -216,38 +253,8 @@ export default function AboutPage() {
                 Our Milestones
               </span>
               <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem", marginTop: ".5rem" }}>
-                {[
-                  {
-                    year: "2012",
-                    title: "Bluefin Founded",
-                    desc: "Started as a one-man operation in Western Sydney, focused on residential air con installs and small electrical jobs.",
-                  },
-                  {
-                    year: "2015",
-                    title: "Expanded to Full Electrical",
-                    desc: "Added a dedicated electrical division with licensed A-grade electricians, covering switchboards, fit-outs, and safety inspections.",
-                  },
-                  {
-                    year: "2018",
-                    title: "100th 5-Star Review",
-                    desc: "Hit our 100th 5-star Google review — a milestone that meant more to us than any award. Pure word of mouth.",
-                  },
-                  {
-                    year: "2021",
-                    title: "Commercial Contracts",
-                    desc: "Landed our first major commercial contracts — schools, strata buildings, and retail fitouts across Greater Sydney.",
-                  },
-                  {
-                    year: "Today",
-                    title: "Still Going Strong",
-                    desc: "500+ jobs completed, a tight-knit team of licensed tradies, and the same commitment to quality we started with.",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.year}
-                    style={{ position: "relative", paddingLeft: "2.5rem" }}
-                  >
-                    {/* dot */}
+                {about.milestones.map((item) => (
+                  <div key={item.year} style={{ position: "relative", paddingLeft: "2.5rem" }}>
                     <div
                       style={{
                         position: "absolute",
@@ -261,7 +268,6 @@ export default function AboutPage() {
                         boxShadow: "0 0 0 3px rgba(30,144,255,.3)",
                       }}
                     />
-                    {/* line */}
                     <div
                       style={{
                         position: "absolute",
@@ -334,145 +340,76 @@ export default function AboutPage() {
               className="font-outfit"
               style={{ fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "#111", marginBottom: ".75rem" }}
             >
-              Meet the <span style={{ color: "#1e90ff" }}>Team</span>
+              {about.teamHeadlineMain} <span style={{ color: "#1e90ff" }}>{about.teamHeadlineHighlight}</span>
             </h2>
             <p className="font-rubik" style={{ color: "#555", maxWidth: "36rem", margin: "0 auto", lineHeight: 1.7 }}>
-              Every job is done by a real, licensed tradie — not a sub-contractor you&apos;ve never met. Here&apos;s who&apos;s behind the Bluefin name.
+              {about.teamSubtext}
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Matt T */}
-            <div
-              style={{
-                background: "#f0f6ff",
-                border: "1px solid rgba(30,144,255,.15)",
-                borderRadius: "1rem",
-                padding: "1.5rem",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  width: "5rem",
-                  height: "5rem",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: "'Outfit',sans-serif",
-                  fontWeight: 900,
-                  fontSize: "1.5rem",
-                  margin: "0 auto 1.25rem",
-                  border: "3px solid rgba(30,144,255,.3)",
-                  background: "linear-gradient(135deg,#1e90ff,#0070e0)",
-                  color: "#fff",
-                }}
-              >
-                MT
-              </div>
-              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.15rem", marginBottom: ".25rem" }}>Matt T.</h3>
-              <p className="font-outfit" style={{ color: "#f5c518", fontSize: ".75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".75rem" }}>
-                Founder &amp; Lead Electrician
-              </p>
-              <p className="font-rubik" style={{ color: "#444", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
-                A-grade electrician with 15+ years in the field. Matt started Bluefin after years of seeing customers get let down by other tradies. He still gets on the tools every day.
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: ".4rem" }}>
-                <span style={{ fontSize: ".7rem", padding: ".2rem .6rem", borderRadius: "9999px", background: "rgba(30,144,255,.1)", color: "#1e90ff", fontFamily: "'Rubik',sans-serif", fontWeight: 500 }}>A-Grade Electrician</span>
-                <span style={{ fontSize: ".7rem", padding: ".2rem .6rem", borderRadius: "9999px", background: "rgba(30,144,255,.1)", color: "#1e90ff", fontFamily: "'Rubik',sans-serif", fontWeight: 500 }}>Lic. L191263</span>
-              </div>
-            </div>
-
-            {/* Jake W */}
-            <div
-              style={{
-                background: "#f0f6ff",
-                border: "1px solid rgba(30,144,255,.15)",
-                borderRadius: "1rem",
-                padding: "1.5rem",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  width: "5rem",
-                  height: "5rem",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: "'Outfit',sans-serif",
-                  fontWeight: 900,
-                  fontSize: "1.5rem",
-                  margin: "0 auto 1.25rem",
-                  border: "3px solid rgba(30,144,255,.3)",
-                  background: "linear-gradient(135deg,#f5c518,#d4a800)",
-                  color: "#060e1a",
-                }}
-              >
-                JW
-              </div>
-              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.15rem", marginBottom: ".25rem" }}>Jake W.</h3>
-              <p className="font-outfit" style={{ color: "#f5c518", fontSize: ".75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".75rem" }}>
-                Senior A/C Technician
-              </p>
-              <p className="font-rubik" style={{ color: "#444", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
-                Jake is our go-to for complex ducted systems and commercial installs. With a background across all major brands, there&apos;s very little he hasn&apos;t seen — or fixed.
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: ".4rem" }}>
-                <span style={{ fontSize: ".7rem", padding: ".2rem .6rem", borderRadius: "9999px", background: "rgba(245,197,24,.1)", color: "#f5c518", fontFamily: "'Rubik',sans-serif", fontWeight: 500 }}>RAC Licence</span>
-                <span style={{ fontSize: ".7rem", padding: ".2rem .6rem", borderRadius: "9999px", background: "rgba(245,197,24,.1)", color: "#f5c518", fontFamily: "'Rubik',sans-serif", fontWeight: 500 }}>Ducted Specialist</span>
-              </div>
-            </div>
-
-            {/* Sam R */}
-            <div
-              style={{
-                background: "#f0f6ff",
-                border: "1px solid rgba(30,144,255,.15)",
-                borderRadius: "1rem",
-                padding: "1.5rem",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  width: "5rem",
-                  height: "5rem",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: "'Outfit',sans-serif",
-                  fontWeight: 900,
-                  fontSize: "1.5rem",
-                  margin: "0 auto 1.25rem",
-                  border: "3px solid rgba(30,144,255,.3)",
-                  background: "linear-gradient(135deg,#1e90ff,#f5c518)",
-                  color: "#fff",
-                }}
-              >
-                SR
-              </div>
-              <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.15rem", marginBottom: ".25rem" }}>Sam R.</h3>
-              <p className="font-outfit" style={{ color: "#f5c518", fontSize: ".75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".75rem" }}>
-                Electrician &amp; Service Tech
-              </p>
-              <p className="font-rubik" style={{ color: "#444", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
-                Sam handles residential installs, service calls, and emergency callouts. Fast, friendly, and leaves every job site cleaner than he found it — customers always comment on it.
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: ".4rem" }}>
-                <span style={{ fontSize: ".7rem", padding: ".2rem .6rem", borderRadius: "9999px", background: "rgba(30,144,255,.1)", color: "#1e90ff", fontFamily: "'Rubik',sans-serif", fontWeight: 500 }}>Licensed Electrician</span>
-                <span style={{ fontSize: ".7rem", padding: ".2rem .6rem", borderRadius: "9999px", background: "rgba(30,144,255,.1)", color: "#1e90ff", fontFamily: "'Rubik',sans-serif", fontWeight: 500 }}>Emergency Response</span>
-              </div>
-            </div>
+            {about.teamMembers.map((member, i) => {
+              const colors = TEAM_COLORS[i % TEAM_COLORS.length];
+              const tagStyle = i === 1 ? TAG_STYLES.yellow : TAG_STYLES.blue;
+              return (
+                <div
+                  key={member.name}
+                  style={{
+                    background: "#f0f6ff",
+                    border: "1px solid rgba(30,144,255,.15)",
+                    borderRadius: "1rem",
+                    padding: "1.5rem",
+                    textAlign: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "5rem",
+                      height: "5rem",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontFamily: "'Outfit',sans-serif",
+                      fontWeight: 900,
+                      fontSize: "1.5rem",
+                      margin: "0 auto 1.25rem",
+                      border: "3px solid rgba(30,144,255,.3)",
+                      background: member.image ? "transparent" : colors.bg,
+                      color: colors.color,
+                      overflow: "hidden",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {member.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={member.image} alt={member.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    ) : (
+                      member.initials
+                    )}
+                  </div>
+                  <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.15rem", marginBottom: ".25rem" }}>{member.name}</h3>
+                  <p className="font-outfit" style={{ color: "#f5c518", fontSize: ".75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: ".1em", marginBottom: ".75rem" }}>
+                    {member.role}
+                  </p>
+                  <p className="font-rubik" style={{ color: "#444", fontSize: ".875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
+                    {member.bio}
+                  </p>
+                  <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: ".4rem" }}>
+                    {member.tags.map((tag) => (
+                      <span key={tag} style={{ fontSize: ".7rem", padding: ".2rem .6rem", borderRadius: "9999px", background: tagStyle.bg, color: tagStyle.color, fontFamily: "'Rubik',sans-serif", fontWeight: 500 }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Hiring note */}
           <div style={{ marginTop: "2.5rem", textAlign: "center" }}>
             <p className="font-rubik" style={{ color: "#888", fontSize: ".85rem" }}>
-              Interested in joining the Bluefin crew?{" "}
+              {about.teamHiringText}{" "}
               <a href="/#contact" style={{ color: "#1e90ff", textDecoration: "none", fontWeight: 500 }}>Get in touch →</a>
             </p>
           </div>
@@ -524,60 +461,18 @@ export default function AboutPage() {
                 color: "#1e90ff",
               }}
             >
-              What We Stand For
+              {about.valuesSectionLabel}
             </span>
             <h2 className="font-outfit" style={{ fontWeight: 900, fontSize: "clamp(1.8rem,4vw,3rem)", color: "#111", marginBottom: ".75rem" }}>
-              Our <span style={{ color: "#d4a800" }}>Values</span>
+              {about.valuesHeadlineMain} <span style={{ color: "#d4a800" }}>{about.valuesHeadlineHighlight}</span>
             </h2>
             <p className="font-rubik" style={{ color: "#555", maxWidth: "34rem", margin: "0 auto", lineHeight: 1.7 }}>
-              These aren&apos;t buzzwords on a wall. They&apos;re the standards every Bluefin job is held to, every single time.
+              {about.valuesSubtext}
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              {
-                icon: (
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1e90ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
-                  </svg>
-                ),
-                iconBg: "rgba(30,144,255,.15)",
-                title: "Punctuality",
-                desc: "We show up when we say we will. If something changes, we call you first. Your time is as valuable as ours.",
-              },
-              {
-                icon: (
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f5c518" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" />
-                  </svg>
-                ),
-                iconBg: "rgba(245,197,24,.15)",
-                title: "Integrity",
-                desc: "We quote honestly and bill exactly what we quote. No surprise charges, no upselling you on things you don't need.",
-              },
-              {
-                icon: (
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1e90ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                  </svg>
-                ),
-                iconBg: "rgba(30,144,255,.15)",
-                title: "Quality",
-                desc: "We don't cut corners. Every install is done to code, every repair is done to last. We take pride in work that passes inspection first go.",
-              },
-              {
-                icon: (
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f5c518" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                ),
-                iconBg: "rgba(245,197,24,.15)",
-                title: "Community",
-                desc: "We're locals. We sponsor local footy clubs, support local suppliers, and give back to the communities that have supported us.",
-              },
-            ].map((value) => (
+            {about.values.map((value, vi) => (
               <div
                 key={value.title}
                 style={{
@@ -592,14 +487,14 @@ export default function AboutPage() {
                     width: "2.75rem",
                     height: "2.75rem",
                     borderRadius: ".75rem",
-                    background: value.iconBg,
+                    background: VALUE_ICON_BG_COLORS[vi % VALUE_ICON_BG_COLORS.length],
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     marginBottom: "1.1rem",
                   }}
                 >
-                  {value.icon}
+                  <ValueIcon icon={value.icon} color={VALUE_ICON_COLORS[vi % VALUE_ICON_COLORS.length]} />
                 </div>
                 <h3 className="font-outfit" style={{ fontWeight: 700, color: "#111", fontSize: "1.05rem", marginBottom: ".5rem" }}>{value.title}</h3>
                 <p className="font-rubik" style={{ color: "#555", fontSize: ".875rem", lineHeight: 1.65 }}>{value.desc}</p>
@@ -623,10 +518,10 @@ export default function AboutPage() {
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-outfit" style={{ fontWeight: 900, fontSize: "clamp(1.6rem,3.5vw,2.5rem)", color: "#111", marginBottom: "1rem" }}>
-            Ready to work with a team you can trust?
+            {about.ctaHeadline}
           </h2>
           <p className="font-rubik" style={{ color: "#555", fontSize: ".95rem", marginBottom: "2rem" }}>
-            Get a free, no-obligation quote. We&apos;ll get back to you fast.
+            {about.ctaSubtext}
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
             <a
@@ -648,7 +543,7 @@ export default function AboutPage() {
               Get a Free Quote
             </a>
             <a
-              href="tel:0428631931"
+              href={`tel:${phone.replace(/\s/g, "")}`}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -667,7 +562,7 @@ export default function AboutPage() {
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1e90ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.22 6.22l.9-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
-              0428 631 931
+              {phone}
             </a>
           </div>
         </div>

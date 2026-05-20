@@ -20,6 +20,13 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
 
+    // Honeypot — bots fill this field, real browsers leave it empty
+    const honeypot = (formData.get("website") as string) || "";
+    if (honeypot) {
+      // Silently return success so bots don't know they were blocked
+      return NextResponse.json({ success: true });
+    }
+
     const name = (formData.get("name") as string)?.trim().slice(0, 200) || "";
     const phone = (formData.get("phone") as string)?.trim().slice(0, 30) || "";
     const email = (formData.get("email") as string)?.trim().slice(0, 200) || "";

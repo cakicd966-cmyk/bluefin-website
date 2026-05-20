@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, ShieldCheck, Zap } from "lucide-react";
+import { Phone, ShieldCheck, Zap, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import type { SiteSettings } from "@/lib/content";
+import { PHONE_NUMBER } from "@/lib/constants";
 
 const footerLinks = {
   Services: [
@@ -17,9 +18,19 @@ const footerLinks = {
 };
 
 export default function Footer({ settings }: { settings?: SiteSettings }) {
-  const phone = settings?.phone || "{phone}";
+  const phone = settings?.phone || PHONE_NUMBER;
   const serviceArea = settings?.serviceArea || "Wollongong, Illawarra, Shellharbour, Kiama, Dapto & Greater Sydney";
+  const tagline = settings?.footer?.tagline ?? "Your trusted local air-conditioning and electrical specialists serving Wollongong, Illawarra and Sydney. Licensed, insured, and committed to quality work on every job.";
+  const contractorLic = settings?.footer?.contractorLicence ?? "982390C";
+  const electricalLic = settings?.footer?.electricalLicence ?? "L191263";
   const year = new Date().getFullYear();
+  const social = settings?.social ?? { facebook: "", instagram: "", linkedin: "", youtube: "" };
+  const socialLinks = [
+    { href: social.facebook, Icon: Facebook, label: "Facebook" },
+    { href: social.instagram, Icon: Instagram, label: "Instagram" },
+    { href: social.linkedin, Icon: Linkedin, label: "LinkedIn" },
+    { href: social.youtube, Icon: Youtube, label: "YouTube" },
+  ].filter((s) => s.href);
 
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
@@ -68,13 +79,31 @@ export default function Footer({ settings }: { settings?: SiteSettings }) {
             </div>
 
             <p className="font-rubik text-white/50 text-sm leading-relaxed max-w-xs mb-5">
-              Your trusted local air-conditioning and electrical specialists serving Wollongong, Illawarra and Sydney. Licensed, insured, and committed to quality work on every job.
+              {tagline}
             </p>
 
             {/* Service area */}
-            <p className="font-rubik text-white/30 text-xs">
+            <p className="font-rubik text-white/30 text-xs mb-5">
               Serving {serviceArea}.
             </p>
+
+            {/* Social links */}
+            {socialLinks.length > 0 && (
+              <div className="flex items-center gap-2">
+                {socialLinks.map(({ href, Icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 border border-white/10 hover:border-white/25 flex items-center justify-center transition-all duration-200 group"
+                  >
+                    <Icon className="w-3.5 h-3.5 text-white/50 group-hover:text-white transition-colors duration-200" />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Links */}
@@ -149,14 +178,14 @@ export default function Footer({ settings }: { settings?: SiteSettings }) {
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-gold/60 shrink-0" />
                 <span className="font-rubik text-white/35 text-xs">
-                  Contractor Lic: <span className="text-white/55 font-medium">982390C</span>
+                  Contractor Lic: <span className="text-white/55 font-medium">{contractorLic}</span>
                 </span>
               </div>
               <div className="hidden sm:block w-px h-3 bg-white/15" />
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-gold/60 shrink-0" />
                 <span className="font-rubik text-white/35 text-xs">
-                  Electrical Lic: <span className="text-white/55 font-medium">L191263</span>
+                  Electrical Lic: <span className="text-white/55 font-medium">{electricalLic}</span>
                 </span>
               </div>
             </div>

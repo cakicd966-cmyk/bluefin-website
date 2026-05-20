@@ -1,9 +1,10 @@
 import { MetadataRoute } from "next";
 import { posts } from "@/app/blog/posts-data";
 import { areas } from "@/app/areas/areas-data";
+import { SITE_URL } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://www.bluefinaircon.com.au";
+  const base = SITE_URL;
 
   return [
     { url: base, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },

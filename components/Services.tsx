@@ -3,42 +3,41 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Wind, Wrench, Zap, AlertTriangle } from "lucide-react";
+import {
+  Wind, Wrench, Zap, AlertTriangle,
+  Thermometer, Settings, Cpu, Plug, Lightbulb,
+  Home, Star, CheckCircle, Calendar, Gauge,
+  ShieldCheck, Hammer, Package, Fan, Sun,
+  Snowflake, Truck, Globe, Phone, BarChart2,
+} from "lucide-react";
+import type { ServiceItem } from "@/lib/content";
 
-const services = [
-  {
-    icon: Wind,
-    title: "Air Conditioning Installation",
-    description:
-      "Supply and install split systems, ducted units, and multi-head systems for homes and commercial spaces. All major brands stocked.",
-    highlights: ["Split Systems", "Ducted Units", "Multi-Head Systems", "All Brands"],
-    color: "electric",
-  },
-  {
-    icon: Wrench,
-    title: "Air Con Servicing & Repairs",
-    description:
-      "Regular maintenance, gas top-ups, filter cleans, and fault diagnosis to keep your system running at peak efficiency year-round.",
-    highlights: ["Annual Servicing", "Gas Recharges", "Fault Diagnosis", "Filter Cleans"],
-    color: "gold",
-  },
-  {
-    icon: Zap,
-    title: "Electrical Work",
-    description:
-      "Licensed electricians for residential and commercial fit-outs, switchboard upgrades, power points, lighting, and safety inspections.",
-    highlights: ["Switchboard Upgrades", "Power Points", "Lighting", "Safety Checks"],
-    color: "electric",
-  },
-  {
-    icon: AlertTriangle,
-    title: "Emergency Callouts",
-    description:
-      "Electrical faults and air con breakdowns don't wait — neither do we. Fast response emergency service across NSW when you need it most.",
-    highlights: ["24/7 Availability", "Fast Response", "All NSW", "No Call-Out Delays"],
-    color: "emergency",
-  },
-];
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  wind: Wind,
+  wrench: Wrench,
+  zap: Zap,
+  alert: AlertTriangle,
+  thermometer: Thermometer,
+  settings: Settings,
+  cpu: Cpu,
+  plug: Plug,
+  lightbulb: Lightbulb,
+  home: Home,
+  star: Star,
+  check: CheckCircle,
+  calendar: Calendar,
+  gauge: Gauge,
+  shield: ShieldCheck,
+  hammer: Hammer,
+  package: Package,
+  fan: Fan,
+  sun: Sun,
+  snowflake: Snowflake,
+  truck: Truck,
+  globe: Globe,
+  phone: Phone,
+  chart: BarChart2,
+};
 
 const colorMap = {
   electric: {
@@ -64,11 +63,11 @@ const colorMap = {
   },
 };
 
-function ServiceCard({ service, index }: { service: (typeof services)[0]; index: number }) {
+function ServiceCard({ service, index }: { service: ServiceItem; index: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const colors = colorMap[service.color as keyof typeof colorMap];
-  const Icon = service.icon;
+  const Icon = ICON_MAP[service.icon as keyof typeof ICON_MAP];
 
   return (
     <motion.div
@@ -80,7 +79,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
     >
       {/* Icon */}
       <div className={`inline-flex w-12 h-12 rounded-xl ${colors.iconBg} items-center justify-center mb-5`}>
-        <Icon className={`w-6 h-6 ${colors.iconColor}`} />
+        {Icon && <Icon className={`w-6 h-6 ${colors.iconColor}`} />}
       </div>
 
       {/* Content */}
@@ -115,7 +114,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
   );
 }
 
-export default function Services() {
+export default function Services({ services }: { services: ServiceItem[] }) {
   const headingRef = useRef(null);
   const headingInView = useInView(headingRef, { once: true, margin: "-60px" });
 

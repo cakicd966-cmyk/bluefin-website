@@ -2,47 +2,54 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ShieldCheck, MapPin, Clock, BadgeCheck } from "lucide-react";
+import {
+  ShieldCheck, MapPin, Clock, BadgeCheck,
+  Star, ThumbsUp, Award, Users, Home, DollarSign,
+  CheckCircle, Heart, Truck, Calendar, Eye, Lock,
+  RefreshCw, MessageCircle, Lightbulb, Thermometer,
+  Wifi, Hammer, Gauge, Settings, Sparkles, Phone,
+  Zap, Wrench, Globe, Target, TrendingUp,
+} from "lucide-react";
+import type { WhyChooseFeature } from "@/lib/content";
 
-const features = [
-  {
-    icon: ShieldCheck,
-    title: "Licensed & Insured",
-    description:
-      "Fully licensed electricians and air-con techs. Work covered by full public liability insurance for your complete peace of mind.",
-    stat: "100%",
-    statLabel: "Fully Covered",
-  },
-  {
-    icon: MapPin,
-    title: "Local NSW Tradies",
-    description:
-      "We live and work right here in NSW. No call centres, no sub-contractors — just your local team who know the area.",
-    stat: "Local",
-    statLabel: "NSW Based",
-  },
-  {
-    icon: Clock,
-    title: "Fast Response",
-    description:
-      "Same-day bookings available. For emergencies, we aim to be on-site within hours — not days. Your comfort can't wait.",
-    stat: "Same",
-    statLabel: "Day Response",
-  },
-  {
-    icon: BadgeCheck,
-    title: "Quality Guaranteed",
-    description:
-      "We stand behind every job with a workmanship guarantee. If something's not right, we come back and fix it. No arguments.",
-    stat: "100%",
-    statLabel: "Satisfaction",
-  },
-];
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  shield: ShieldCheck,
+  map: MapPin,
+  clock: Clock,
+  badge: BadgeCheck,
+  star: Star,
+  thumbsup: ThumbsUp,
+  award: Award,
+  users: Users,
+  home: Home,
+  dollar: DollarSign,
+  check: CheckCircle,
+  heart: Heart,
+  truck: Truck,
+  calendar: Calendar,
+  eye: Eye,
+  lock: Lock,
+  refresh: RefreshCw,
+  message: MessageCircle,
+  lightbulb: Lightbulb,
+  thermometer: Thermometer,
+  wifi: Wifi,
+  hammer: Hammer,
+  gauge: Gauge,
+  settings: Settings,
+  sparkles: Sparkles,
+  phone: Phone,
+  zap: Zap,
+  wrench: Wrench,
+  globe: Globe,
+  target: Target,
+  trending: TrendingUp,
+};
 
-function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index: number }) {
+function FeatureCard({ feature, index }: { feature: WhyChooseFeature; index: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
-  const Icon = feature.icon;
+  const Icon = ICON_MAP[feature.icon as keyof typeof ICON_MAP];
 
   return (
     <motion.div
@@ -55,7 +62,7 @@ function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index:
       {/* Top row */}
       <div className="flex items-start justify-between mb-5">
         <div className="w-11 h-11 rounded-xl bg-electric/10 flex items-center justify-center">
-          <Icon className="w-5 h-5 text-electric" />
+          {Icon && <Icon className="w-5 h-5 text-electric" />}
         </div>
         <div className="text-right">
           <p className="font-outfit font-black text-2xl text-gold-dark leading-none">{feature.stat}</p>
@@ -74,9 +81,20 @@ function FeatureCard({ feature, index }: { feature: (typeof features)[0]; index:
   );
 }
 
-export default function WhyChooseUs() {
+export default function WhyChooseUs({
+  features,
+  contractorLicence,
+  electricalLicence,
+}: {
+  features: WhyChooseFeature[];
+  contractorLicence?: string;
+  electricalLicence?: string;
+}) {
   const headingRef = useRef(null);
   const inView = useInView(headingRef, { once: true, margin: "-60px" });
+
+  const contractorLic = contractorLicence ?? "982390C";
+  const electricalLic = electricalLicence ?? "L191263";
 
   return (
     <section id="why-us" className="py-20 md:py-28 bg-navy-deep relative">
@@ -127,14 +145,14 @@ export default function WhyChooseUs() {
             <ShieldCheck className="w-4 h-4 text-gold-dark shrink-0" />
             <span className="font-rubik text-gray-500 text-sm">
               Contractor Licence:{" "}
-              <span className="text-gray-900 font-semibold">982390C</span>
+              <span className="text-gray-900 font-semibold">{contractorLic}</span>
             </span>
           </div>
           <div className="flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-5 py-3 shadow-sm">
             <ShieldCheck className="w-4 h-4 text-gold-dark shrink-0" />
             <span className="font-rubik text-gray-500 text-sm">
               Electrical Licence:{" "}
-              <span className="text-gray-900 font-semibold">L191263</span>
+              <span className="text-gray-900 font-semibold">{electricalLic}</span>
             </span>
           </div>
         </motion.div>

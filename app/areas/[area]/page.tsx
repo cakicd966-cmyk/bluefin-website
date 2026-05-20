@@ -5,6 +5,7 @@ import { Phone, CheckCircle, MapPin, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { areas, getAreaBySlug } from "@/app/areas/areas-data";
+import { SITE_URL } from "@/lib/constants";
 
 export function generateStaticParams() {
   return areas.map((a) => ({ area: a.slug }));
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: { area: string } })
   const area = getAreaBySlug(params.area);
   if (!area) return {};
   return {
-    title: `Air Conditioning & Electrician ${area.name} | Bluefin`,
+    title: `Air Conditioning & Electrician ${area.name}`,
     description: `Licensed air conditioning installation, servicing & electrical work in ${area.name}, ${area.region}. Free quotes, upfront pricing. Call 0428 631 931.`,
     alternates: { canonical: `/areas/${area.slug}` },
   };
@@ -24,13 +25,13 @@ export default function AreaPage({ params }: { params: { area: string } }) {
   const area = getAreaBySlug(params.area);
   if (!area) notFound();
 
-  const base = "https://www.bluefinaircon.com.au";
+  const base = SITE_URL;
 
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": ["HVACBusiness", "Electrician"],
         "@id": `${base}/areas/${area.slug}`,
         "name": "Bluefin Air-Conditioning & Electrical",
         "description": area.intro,
@@ -39,8 +40,9 @@ export default function AreaPage({ params }: { params: { area: string } }) {
         "areaServed": { "@type": "City", "name": area.name },
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Wollongong",
+          "addressLocality": "Coalcliff",
           "addressRegion": "NSW",
+          "postalCode": "2508",
           "addressCountry": "AU",
         },
         "hasOfferCatalog": {

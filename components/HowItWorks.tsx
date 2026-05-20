@@ -2,33 +2,40 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Phone, FileText, CheckCircle } from "lucide-react";
+import {
+  Phone, FileText, CheckCircle,
+  Calendar, Mail, Send, Search, Info,
+  Clock, Home, Users, Star, ThumbsUp,
+  Award, MessageCircle, Heart, Wrench,
+  ShieldCheck, MapPin, Hammer, Gauge,
+} from "lucide-react";
+import type { HowItWorksStep } from "@/lib/content";
 
-const steps = [
-  {
-    number: "01",
-    icon: Phone,
-    title: "Call Us",
-    description:
-      "Give us a ring on 0428 631 931 or fill in the contact form. Tell us what you need and where you are — we'll listen and ask the right questions.",
-  },
-  {
-    number: "02",
-    icon: FileText,
-    title: "We Quote",
-    description:
-      "We'll provide a clear, upfront quote with no hidden costs. For most jobs we can quote over the phone or via a quick site visit.",
-  },
-  {
-    number: "03",
-    icon: CheckCircle,
-    title: "Job Done",
-    description:
-      "Our licensed technicians arrive on time, complete the work to the highest standard, and clean up before they leave. Simple as that.",
-  },
-];
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  phone: Phone,
+  file: FileText,
+  check: CheckCircle,
+  calendar: Calendar,
+  mail: Mail,
+  send: Send,
+  search: Search,
+  info: Info,
+  clock: Clock,
+  home: Home,
+  users: Users,
+  star: Star,
+  thumbsup: ThumbsUp,
+  award: Award,
+  message: MessageCircle,
+  heart: Heart,
+  wrench: Wrench,
+  shield: ShieldCheck,
+  map: MapPin,
+  hammer: Hammer,
+  gauge: Gauge,
+};
 
-export default function HowItWorks() {
+export default function HowItWorks({ steps }: { steps: HowItWorksStep[] }) {
   const headingRef = useRef(null);
   const inView = useInView(headingRef, { once: true, margin: "-60px" });
 
@@ -69,7 +76,7 @@ export default function HowItWorks() {
           </div>
 
           {steps.map((step, i) => {
-            const Icon = step.icon;
+            const Icon = ICON_MAP[step.icon as keyof typeof ICON_MAP];
             return (
               <motion.div
                 key={step.number}
@@ -82,7 +89,7 @@ export default function HowItWorks() {
                 {/* Step circle */}
                 <div className="relative mb-6">
                   <div className="w-24 h-24 rounded-2xl bg-white border-2 border-electric/25 group-hover:border-electric/60 flex items-center justify-center transition-all duration-300 shadow-md group-hover:shadow-electric/20">
-                    <Icon className="w-9 h-9 text-electric" />
+                    {Icon && <Icon className="w-9 h-9 text-electric" />}
                   </div>
                   {/* Number badge */}
                   <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gold text-gray-900 font-outfit font-black text-xs flex items-center justify-center shadow-md">

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import FaqClient from "./FaqClient";
+import { getSettings } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Air Con & Electrical FAQs | Wollongong",
   description:
     "Answers to your air-conditioning and electrical questions. Pricing, installation, servicing and emergency callouts for Wollongong, Illawarra and Sydney. Call Bluefin on 0428 631 931.",
-  keywords:
-    "air conditioning FAQ Wollongong, electrician FAQ Illawarra, air con installation cost Wollongong, switchboard upgrade cost NSW, emergency electrician Illawarra",
   alternates: {
     canonical: "/faq",
   },
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     title: "Air Con & Electrical FAQs | Wollongong",
     description:
       "Common questions about air conditioning and electrical services in Wollongong and the Illawarra region.",
-    url: "https://www.bluefinaircon.com.au/faq",
+    url: "https://www.bluefinairandelc.com.au/faq",
   },
 };
 
@@ -106,13 +107,14 @@ const faqSchema = {
 };
 
 export default function FaqPage() {
+  const settings = getSettings();
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <FaqClient />
+      <FaqClient faqs={settings.faqs} />
     </>
   );
 }

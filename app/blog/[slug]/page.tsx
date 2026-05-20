@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { posts, getPostBySlug } from "@/app/blog/posts-data";
 import BlogPostClient from "./BlogPostClient";
+import { SITE_URL } from "@/lib/constants";
 
 interface Props {
   params: { slug: string };
@@ -18,14 +19,13 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: post.seo.title,
     description: post.seo.description,
-    keywords: post.seo.keywords,
     alternates: {
       canonical: `/blog/${post.slug}`,
     },
     openGraph: {
       title: post.seo.title,
       description: post.seo.description,
-      url: `https://www.bluefinaircon.com.au/blog/${post.slug}`,
+      url: `${SITE_URL}/blog/${post.slug}`,
       images: [{ url: post.image, alt: post.imageAlt }],
       type: "article",
       publishedTime: post.date,
@@ -56,17 +56,17 @@ export default function BlogPostPage({ params }: Props) {
     author: {
       "@type": "Organization",
       name: "Bluefin Air-Conditioning & Electrical",
-      url: "https://www.bluefinaircon.com.au",
+      url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
       name: "Bluefin Air-Conditioning & Electrical",
-      url: "https://www.bluefinaircon.com.au",
+      url: SITE_URL,
     },
     datePublished: post.date,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://www.bluefinaircon.com.au/blog/${post.slug}`,
+      "@id": `${SITE_URL}/blog/${post.slug}`,
     },
   };
 

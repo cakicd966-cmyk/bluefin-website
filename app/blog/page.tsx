@@ -7,8 +7,6 @@ export const metadata: Metadata = {
   title: "Fin Facts — Air Con & Electrical Tips | Illawarra",
   description:
     "Expert air-conditioning and electrical advice from Bluefin's Wollongong-based team. How-to guides, maintenance tips and energy-saving advice for Illawarra and Sydney homeowners.",
-  keywords:
-    "air conditioning tips Wollongong, electrician advice Illawarra, air con maintenance Wollongong, energy saving air con, electrical safety tips NSW",
   alternates: {
     canonical: "/blog",
   },
@@ -16,7 +14,7 @@ export const metadata: Metadata = {
     title: "Fin Facts — Air Con & Electrical Tips | Illawarra",
     description:
       "Expert advice from Bluefin's Wollongong-based team. Tips for Illawarra and Sydney homeowners.",
-    url: "https://www.bluefinaircon.com.au/blog",
+    url: "https://www.bluefinairandelc.com.au/blog",
     images: [{ url: "/blog/aircon-service.jpg", width: 1200, height: 630, alt: "Fin Facts — Air Con & Electrical Tips from Bluefin" }],
   },
 };

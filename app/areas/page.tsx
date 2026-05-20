@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { areas } from "@/app/areas/areas-data";
 import AreasGrid from "./AreasGrid";
+import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Service Areas — Wollongong, Illawarra & Surrounds | Bluefin",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function AreasPage() {
-  const base = "https://www.bluefinaircon.com.au";
+  const base = SITE_URL;
 
   const schema = {
     "@context": "https://schema.org",

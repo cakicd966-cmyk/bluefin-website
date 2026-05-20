@@ -4,9 +4,10 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Phone, MapPin, Clock, Send, CheckCircle, ImagePlus, X } from "lucide-react";
 import type { SiteSettings } from "@/lib/content";
+import { PHONE_NUMBER } from "@/lib/constants";
 
 export default function Contact({ settings }: { settings?: SiteSettings }) {
-  const phone = settings?.phone || "{phone}";
+  const phone = settings?.phone || PHONE_NUMBER;
   const serviceArea = settings?.serviceArea || "Wollongong, Shellharbour, Kiama, Dapto, Illawarra and Greater Sydney";
   const hours = settings?.hours || { weekdays: "7:00am – 5:30pm", saturday: "8:00am – 2:00pm", emergency: "24/7 Available" };
   const headingRef = useRef(null);
@@ -20,6 +21,7 @@ export default function Contact({ settings }: { settings?: SiteSettings }) {
     email: "",
     service: "",
     message: "",
+    website: "", // honeypot — must stay empty
   });
   const [images, setImages] = useState<File[]>([]);
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
@@ -55,6 +57,7 @@ export default function Contact({ settings }: { settings?: SiteSettings }) {
     formData.append("email", form.email);
     formData.append("service", form.service);
     formData.append("message", form.message);
+    formData.append("website", form.website); // honeypot
     images.forEach((img) => formData.append("images", img));
 
     try {
@@ -62,10 +65,10 @@ export default function Contact({ settings }: { settings?: SiteSettings }) {
       if (res.ok) {
         setSubmitted(true);
       } else {
-        setError("Something went wrong. Please call us directly on {phone}.");
+        setError(`Something went wrong. Please call us directly on ${PHONE_NUMBER}.`);
       }
     } catch {
-      setError("Could not send. Please call us on {phone}.");
+      setError(`Could not send. Please call us on ${PHONE_NUMBER}.`);
     } finally {
       setLoading(false);
     }
@@ -334,6 +337,20 @@ export default function Contact({ settings }: { settings?: SiteSettings }) {
                       className="hidden"
                     />
                   </div>
+                </div>
+
+                {/* Honeypot — hidden from real users, bots fill it in */}
+                <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: "-9999px", width: 0, height: 0, overflow: "hidden" }}>
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.website}
+                    onChange={handleChange}
+                  />
                 </div>
 
                 {error && (

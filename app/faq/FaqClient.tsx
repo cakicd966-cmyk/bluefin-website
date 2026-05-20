@@ -3,268 +3,54 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import type { FaqItem } from "@/lib/content";
 
 type FilterCat = "all" | "aircon" | "electrical" | "pricing" | "service";
 
-interface FAQItem {
-  id: number;
-  cats: string;
-  question: string;
-  answer: React.ReactNode;
-}
+function renderAnswer(answer: string) {
+  const lines = answer.split('\n');
+  const elements: React.ReactNode[] = [];
+  let listItems: string[] = [];
 
-const faqItems: FAQItem[] = [
-  {
-    id: 1,
-    cats: "aircon pricing",
-    question: "How much does air conditioning installation cost?",
-    answer: (
-      <div>
-        <p>Installation cost depends on the type and size of system, and your home&apos;s layout. As a rough guide:</p>
-        <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
-          <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
+  lines.forEach((line, i) => {
+    if (line.startsWith('- ')) {
+      listItems.push(line.slice(2));
+    } else {
+      if (listItems.length > 0) {
+        elements.push(
+          <ul key={`ul-${i}`} style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
+            {listItems.map((item, j) => (
+              <li key={j} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
+                <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        );
+        listItems = [];
+      }
+      if (line.trim()) {
+        elements.push(<p key={`p-${i}`} style={{ marginTop: elements.length > 0 ? ".75rem" : 0 }}>{line}</p>);
+      }
+    }
+  });
+
+  // flush remaining list items
+  if (listItems.length > 0) {
+    elements.push(
+      <ul key="ul-final" style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
+        {listItems.map((item, j) => (
+          <li key={j} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
             <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#111", fontWeight: 600 }}>Split system (supply &amp; install):</strong> from $1,200–$2,500+ depending on the kW rating and brand
+            {item}
           </li>
-          <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-            <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#111", fontWeight: 600 }}>Multi-head systems:</strong> from $3,500+ for a 3-zone setup
-          </li>
-          <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-            <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#111", fontWeight: 600 }}>Ducted systems:</strong> from $6,000–$15,000+ depending on home size and zones
-          </li>
-        </ul>
-        <p style={{ marginTop: ".75rem" }}>Every job is different. The best way to get an accurate number is to <a href="/#contact" style={{ color: "#1e90ff", textDecoration: "none" }}>request a free quote</a> — we&apos;ll give you a fixed price upfront with no surprises.</p>
-      </div>
-    ),
-  },
-  {
-    id: 2,
-    cats: "aircon",
-    question: "What air conditioning brands do you stock and install?",
-    answer: (
-      <div>
-        <p>We work with all major air conditioning brands including:</p>
-        <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
-          {[
-            ["Mitsubishi Electric", "our most popular choice for residential"],
-            ["Daikin", "excellent for ducted systems"],
-            ["Fujitsu", "reliable, great value"],
-            ["LG", "strong multi-head range"],
-            ["Samsung, Panasonic, Carrier, Actron Air", "and more"],
-          ].map(([brand, desc]) => (
-            <li key={brand} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-              <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              <strong style={{ color: "#111", fontWeight: 600 }}>{brand}</strong> — {desc}
-            </li>
-          ))}
-        </ul>
-        <p style={{ marginTop: ".75rem" }}>We&apos;ll recommend the right brand and model for your situation — not just the most expensive one. If you already have a brand preference, we&apos;re happy to work with it.</p>
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    cats: "service aircon",
-    question: "Do you service my area?",
-    answer: (
-      <div>
-        <p>We operate across the <strong style={{ color: "#111", fontWeight: 600 }}>Illawarra and Wollongong regions</strong>, including:</p>
-        <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
-          {[
-            "Wollongong (all suburbs)",
-            "Shellharbour, Albion Park, Oak Flats",
-            "Kiama, Gerringong, Berry",
-            "Dapto, Horsley, Kanahooka",
-            "Fairy Meadow, Corrimal, Thirroul, Bulli",
-            "Helensburgh and northern Illawarra",
-            "Nowra / Shoalhaven",
-          ].map((area) => (
-            <li key={area} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-              <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              {area}
-            </li>
-          ))}
-        </ul>
-        <p style={{ marginTop: ".75rem" }}>See our full <a href="/areas" style={{ color: "#1e90ff", textDecoration: "none" }}>service areas page</a>, or call us on <a href="tel:0428631931" style={{ color: "#1e90ff", textDecoration: "none" }}>0428 631 931</a> — if we can get there, we will.</p>
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    cats: "aircon",
-    question: "What size air conditioner do I need for my room?",
-    answer: (
-      <div>
-        <p>Sizing depends on the room area, ceiling height, insulation, sun exposure, and whether it&apos;s a bedroom or living area. As a starting guide:</p>
-        <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
-          {[
-            ["Up to 20m²", "small bedroom", "2.5kW"],
-            ["20–35m²", "main bedroom, study", "3.5kW"],
-            ["35–60m²", "open-plan lounge", "6–7kW"],
-            ["60–80m²+", "large living area", "8–9kW+"],
-          ].map(([size, room, kw]) => (
-            <li key={size} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-              <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              <strong style={{ color: "#111", fontWeight: 600 }}>{size}</strong> ({room}): {kw}
-            </li>
-          ))}
-        </ul>
-        <p style={{ marginTop: ".75rem" }}>We always assess the space before recommending a unit — an undersized system will struggle in summer, and an oversized one wastes electricity. We&apos;ll get it right.</p>
-      </div>
-    ),
-  },
-  {
-    id: 5,
-    cats: "aircon pricing",
-    question: "How often should I service my air conditioner?",
-    answer: (
-      <div>
-        <p>We recommend servicing your air conditioner <strong style={{ color: "#111", fontWeight: 600 }}>at least once a year</strong>, ideally before summer. Regular servicing:</p>
-        <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
-          {[
-            "Extends the life of your unit",
-            "Keeps it running at peak efficiency (lower power bills)",
-            "Catches small issues before they become expensive repairs",
-            "Keeps the air quality clean (dirty filters can cause respiratory problems)",
-          ].map((item) => (
-            <li key={item} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-              <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p style={{ marginTop: ".75rem" }}>Service visits start from around <strong style={{ color: "#111", fontWeight: 600 }}>$150–$250</strong> for a standard split system. Commercial systems with multiple heads will vary. Ask us about a service package if you have multiple units.</p>
-      </div>
-    ),
-  },
-  {
-    id: 6,
-    cats: "electrical pricing",
-    question: "How much does a switchboard upgrade cost?",
-    answer: (
-      <div>
-        <p>Switchboard upgrade costs vary depending on the size of your home and the current condition of your board. Typical pricing:</p>
-        <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
-          {[
-            ["Single-phase upgrade (standard home)", "$1,500–$2,500"],
-            ["Three-phase upgrade", "$2,500–$4,000+"],
-            ["Adding safety switches/RCDs", "from $300"],
-          ].map(([type, price]) => (
-            <li key={type} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-              <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              <strong style={{ color: "#111", fontWeight: 600 }}>{type}:</strong> {price}
-            </li>
-          ))}
-        </ul>
-        <p style={{ marginTop: ".75rem" }}>If your switchboard is more than 25 years old, has ceramic fuses, or keeps tripping, it&apos;s worth getting it assessed. We offer free quotes and can usually diagnose issues on the first visit.</p>
-      </div>
-    ),
-  },
-  {
-    id: 7,
-    cats: "service",
-    question: "Are you licensed and insured?",
-    answer: (
-      <div>
-        <p>Yes — fully licensed and insured. Our licence details:</p>
-        <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
-          <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-            <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#111", fontWeight: 600 }}>Contractor Licence:</strong> 982390C (air conditioning &amp; refrigeration)
-          </li>
-          <li style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-            <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-            <strong style={{ color: "#111", fontWeight: 600 }}>Electrical Contractor Licence:</strong> L191263 (A-grade electricians)
-          </li>
-        </ul>
-        <p style={{ marginTop: ".75rem" }}>We carry full public liability insurance on every job. You can ask to see our licence details at any time — we&apos;re proud to show them. Always make sure any tradie you hire is properly licensed; it protects you if something goes wrong.</p>
-      </div>
-    ),
-  },
-  {
-    id: 8,
-    cats: "service",
-    question: "Do you offer emergency or after-hours call-outs?",
-    answer: (
-      <div>
-        <p>Yes. We offer <strong style={{ color: "#111", fontWeight: 600 }}>24/7 emergency callouts</strong> for urgent electrical faults and air con failures. If you have a safety issue — sparking outlets, tripped boards that won&apos;t reset, or your system has died in the middle of a heatwave — call us immediately on <a href="tel:0428631931" style={{ color: "#1e90ff", textDecoration: "none" }}>0428 631 931</a>.</p>
-        <p style={{ marginTop: ".75rem" }}>Emergency call-out rates do apply outside of normal business hours. We&apos;ll always tell you the cost upfront before we come out so there are no surprises.</p>
-      </div>
-    ),
-  },
-  {
-    id: 9,
-    cats: "aircon",
-    question: "My air conditioner isn't cooling properly. What could be wrong?",
-    answer: (
-      <div>
-        <p>The most common reasons an air conditioner stops cooling well:</p>
-        <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
-          {[
-            ["Dirty filters", "restricts airflow, the most common fix (clean them monthly)"],
-            ["Low refrigerant gas", "the unit has a slow leak and needs a top-up"],
-            ["Dirty condenser coils (outdoor unit)", "reduces heat exchange efficiency"],
-            ["The unit is undersized", "for the space"],
-            ["Faulty compressor or sensor", "requires professional diagnosis"],
-          ].map(([cause, desc]) => (
-            <li key={cause} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-              <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              <strong style={{ color: "#111", fontWeight: 600 }}>{cause}</strong> — {desc}
-            </li>
-          ))}
-        </ul>
-        <p style={{ marginTop: ".75rem" }}>Before calling us, check that: the filter is clean, the outdoor unit isn&apos;t blocked, and all vents are open. If it&apos;s still not right, call us — most issues are diagnosed and fixed in a single visit.</p>
-      </div>
-    ),
-  },
-  {
-    id: 10,
-    cats: "electrical",
-    question: "Can I do my own electrical work in NSW?",
-    answer: (
-      <div>
-        <p><strong style={{ color: "#111", fontWeight: 600 }}>No — not in NSW.</strong> All electrical work beyond very minor tasks (like replacing a lightbulb or resetting a safety switch) must be carried out by a licensed electrician. This is a legal requirement under Australian law.</p>
-        <p style={{ marginTop: ".75rem" }}>Unlicensed electrical work is dangerous and can void your home insurance. It can also cause fires, electrocution, and may result in significant fines. If you&apos;re in doubt, call us — we can often quote over the phone for straightforward jobs.</p>
-      </div>
-    ),
-  },
-  {
-    id: 11,
-    cats: "service pricing",
-    question: "Do you provide written quotes before starting work?",
-    answer: (
-      <div>
-        <p>Always. We provide <strong style={{ color: "#111", fontWeight: 600 }}>clear, written quotes</strong> before any work begins. The quote includes:</p>
-        <ul style={{ paddingLeft: "1.2rem", marginTop: ".5rem", display: "flex", flexDirection: "column", gap: ".35rem" }}>
-          {[
-            "Itemised labour and material costs",
-            "The scope of work — exactly what will and won't be included",
-            "Any conditions or assumptions",
-          ].map((item) => (
-            <li key={item} style={{ listStyle: "none", position: "relative", paddingLeft: ".75rem" }}>
-              <span style={{ position: "absolute", left: 0, color: "#1e90ff" }}>–</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p style={{ marginTop: ".75rem" }}>We never start work without your approval. And once you accept a quote, that&apos;s the price — no hidden extras. If we find something unexpected during the job, we stop and talk to you before proceeding.</p>
-      </div>
-    ),
-  },
-  {
-    id: 12,
-    cats: "service",
-    question: "Do you offer a warranty on your work?",
-    answer: (
-      <div>
-        <p>Yes. All workmanship is covered by our <strong style={{ color: "#111", fontWeight: 600 }}>labour warranty</strong> — if something we installed or repaired fails due to our workmanship, we&apos;ll come back and fix it at no charge.</p>
-        <p style={{ marginTop: ".75rem" }}>Equipment and product warranties are provided by the manufacturer and typically cover 5 years for air conditioning units and 1–2 years for electrical components. We&apos;ll walk you through any warranties that apply to your job before we finish up.</p>
-      </div>
-    ),
-  },
-];
+        ))}
+      </ul>
+    );
+  }
+
+  return elements;
+}
 
 const filterLabels: { key: FilterCat; label: string }[] = [
   { key: "all", label: "All Questions" },
@@ -274,12 +60,12 @@ const filterLabels: { key: FilterCat; label: string }[] = [
   { key: "service", label: "Our Service" },
 ];
 
-export default function FAQPage() {
+export default function FAQPage({ faqs }: { faqs: FaqItem[] }) {
   const [activeFilter, setActiveFilter] = useState<FilterCat>("all");
   const [openId, setOpenId] = useState<number | null>(null);
 
-  const visibleItems = faqItems.filter(
-    (item) => activeFilter === "all" || item.cats.includes(activeFilter)
+  const visibleItems = faqs.filter(
+    (item) => activeFilter === "all" || item.category.includes(activeFilter)
   );
 
   const toggle = (id: number) => {
@@ -467,7 +253,7 @@ export default function FAQPage() {
                         borderTop: "1px solid rgba(0,0,0,.07)",
                       }}
                     >
-                      {item.answer}
+                      {renderAnswer(item.answer)}
                     </div>
                   </div>
                 </div>

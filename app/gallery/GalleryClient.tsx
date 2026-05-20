@@ -102,67 +102,84 @@ export default function GalleryPage({ items }: { items: GalleryItem[] }) {
           </p>
 
           {/* Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem" }}>
-            {visibleItems.map((item) => {
-              const colors = CAT_COLORS[item.cat.split(" ")[0]] ?? CAT_COLORS.aircon;
-              return (
-                <div
-                  key={item.id}
-                  onClick={() => item.image && setLightboxItem(item)}
-                  style={{
-                    position: "relative",
-                    borderRadius: "1rem",
-                    overflow: "hidden",
-                    aspectRatio: "4/3",
-                    cursor: item.image ? "pointer" : "default",
-                    border: "1px solid rgba(0,0,0,.08)",
-                    transition: "transform .3s ease, box-shadow .3s ease",
-                    background: "#dde8f5",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!item.image) return;
-                    (e.currentTarget as HTMLDivElement).style.transform = "scale(1.02)";
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = "0 20px 40px rgba(0,0,0,.15)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLDivElement).style.transform = "scale(1)";
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-                  }}
-                >
-                  {item.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
+          {visibleItems.some((i) => i.image) ? (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem" }}>
+              {visibleItems.filter((item) => item.image).map((item) => {
+                const colors = CAT_COLORS[item.cat.split(" ")[0]] ?? CAT_COLORS.aircon;
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => setLightboxItem(item)}
+                    style={{
+                      position: "relative",
+                      borderRadius: "1rem",
+                      overflow: "hidden",
+                      aspectRatio: "4/3",
+                      cursor: "pointer",
+                      border: "1px solid rgba(0,0,0,.08)",
+                      transition: "transform .3s ease, box-shadow .3s ease",
+                      background: "#dde8f5",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.transform = "scale(1.02)";
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = "0 20px 40px rgba(0,0,0,.15)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.transform = "scale(1)";
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={item.image}
+                      src={item.image!}
                       alt={item.title}
                       style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
                     />
-                  ) : (
-                    <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg,#0d2a4a,#1a3a5c)", gap: ".5rem" }}>
-                      <div style={{ width: "3rem", height: "3rem", borderRadius: "50%", background: "rgba(30,144,255,.15)", border: "2px dashed rgba(30,144,255,.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="rgba(30,144,255,.6)" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                      </div>
-                      <p style={{ color: "rgba(255,255,255,.4)", fontSize: ".7rem", fontFamily: "'Rubik',sans-serif" }}>Photo coming soon</p>
+                    {/* Overlay */}
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(6,14,26,.9) 0%, rgba(6,14,26,.2) 50%, transparent 100%)" }} />
+                    {/* Info */}
+                    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1rem 1.1rem", zIndex: 2 }}>
+                      <span style={{ display: "inline-block", fontSize: ".65rem", fontFamily: "'Outfit',sans-serif", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", padding: ".2rem .6rem", borderRadius: "9999px", marginBottom: ".4rem", background: colors.bg, color: colors.color }}>
+                        {item.catLabel}
+                      </span>
+                      <p className="font-outfit" style={{ fontWeight: 700, color: "#fff", fontSize: ".95rem", lineHeight: 1.3 }}>{item.title}</p>
+                      <p className="font-rubik" style={{ color: "rgba(255,255,255,.5)", fontSize: ".75rem", marginTop: ".2rem" }}>{item.subtitle}</p>
                     </div>
-                  )}
-
-                  {/* Overlay */}
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(6,14,26,.9) 0%, rgba(6,14,26,.2) 50%, transparent 100%)" }} />
-
-                  {/* Info */}
-                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1rem 1.1rem", zIndex: 2 }}>
-                    <span style={{ display: "inline-block", fontSize: ".65rem", fontFamily: "'Outfit',sans-serif", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", padding: ".2rem .6rem", borderRadius: "9999px", marginBottom: ".4rem", background: colors.bg, color: colors.color }}>
-                      {item.catLabel}
-                    </span>
-                    <p className="font-outfit" style={{ fontWeight: 700, color: "#fff", fontSize: ".95rem", lineHeight: 1.3 }}>{item.title}</p>
-                    <p className="font-rubik" style={{ color: "rgba(255,255,255,.5)", fontSize: ".75rem", marginTop: ".2rem" }}>{item.subtitle}</p>
                   </div>
+                );
+              })}
+            </div>
+          ) : (
+            /* ── Empty state ── */
+            <div style={{ textAlign: "center", padding: "5rem 1rem" }}>
+              <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: "1.25rem", maxWidth: "28rem" }}>
+                <div style={{ width: "5rem", height: "5rem", borderRadius: "1.25rem", background: "linear-gradient(135deg,rgba(30,144,255,.12),rgba(245,197,24,.08))", border: "2px dashed rgba(30,144,255,.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="rgba(30,144,255,.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <path d="M21 15l-5-5L5 21"/>
+                  </svg>
                 </div>
-              );
-            })}
-          </div>
+                <div>
+                  <h3 className="font-outfit" style={{ fontWeight: 800, fontSize: "1.3rem", color: "#111", marginBottom: ".5rem" }}>
+                    Photos coming soon
+                  </h3>
+                  <p className="font-rubik" style={{ color: "#666", fontSize: ".9rem", lineHeight: 1.65 }}>
+                    We&apos;re building out our job gallery. Check back soon — or get in touch and we&apos;ll show you examples of our work directly.
+                  </p>
+                </div>
+                <a
+                  href="/#contact"
+                  style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", background: "#1e90ff", color: "#fff", fontFamily: "'Outfit',sans-serif", fontWeight: 700, padding: ".75rem 1.75rem", borderRadius: ".75rem", textDecoration: "none", fontSize: ".9rem" }}
+                >
+                  Get in Touch
+                </a>
+              </div>
+            </div>
+          )}
 
-          {visibleItems.length === 0 && (
-            <div style={{ textAlign: "center", padding: "4rem", color: "#888" }}>
+          {visibleItems.some((i) => i.image) && visibleItems.filter((i) => i.image).length === 0 && (
+            <div style={{ textAlign: "center", padding: "4rem", color: "#888", fontFamily: "'Rubik',sans-serif" }}>
               No jobs in this category yet.
             </div>
           )}
